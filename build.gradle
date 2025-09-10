@@ -1,9 +1,0 @@
-// Root Gradle build file for the multi-project repository.
-// Keep root minimal; module-specific config lives in :coc-java
-
-allprojects {
-    repositories {
-        mavenCentral()
-    }
-}
-
