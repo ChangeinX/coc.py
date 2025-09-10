@@ -5,8 +5,13 @@ Java library for ClanBoards. Published to GitHub Packages.
 - Group: `com.clanboards`
 - Artifact: `coc-java`
 - Latest release: `0.1.0`
-- Snapshots: `0.0.1-SNAPSHOT` and newer
+- Snapshots: `0.1.1-SNAPSHOT` and newer
 - Java compatibility: compiled for Java 17; tested on Java 17, 21, and 23 in CI
+
+## Javadocs
+
+- Overview: https://changeinx.github.io/coc.py/overview-summary.html
+- Workflow: https://github.com/ChangeinX/coc.py/actions/workflows/publish-javadoc.yml
 
 ## Add the repository (GitHub Packages)
 
