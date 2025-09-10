@@ -11,6 +11,10 @@ coc.py
    :target: https://pypi.python.org/pypi/coc.py
    :alt: PyPI supported Python versions
 
+.. image:: https://img.shields.io/badge/docs-Javadoc-blue
+   :target: https://ChangeinX.github.io/coc.py/
+   :alt: Java Javadocs
+
 
 Easy to use asynchronous Clash of Clans API wrapper in Python.
 
@@ -162,6 +166,5 @@ Disclaimer
 This content is not affiliated with, endorsed, sponsored, or specifically
 approved by Supercell and Supercell is not responsible for it.
 For more information see `Supercell's Fan Content Policy. <https://www.supercell.com/fan-content-policy.>`_
-
 
 

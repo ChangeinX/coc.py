@@ -1,5 +1,7 @@
 # coc-java
 
+[![Javadocs](https://img.shields.io/badge/docs-Javadoc-blue)](https://ChangeinX.github.io/coc.py/)
+
 Java library (in-progress) for Clash of Clans API.
 
 This module starts the migration from the legacy Python client to Java with TDD. It currently supports:
@@ -57,3 +59,11 @@ Set env vars `COC_DEV_EMAIL` and `COC_DEV_PASSWORD`, then:
 - `DevSiteAuthenticator` mirrors Python logic: login, derive IP from temporary token, list keys, revoke mismatched, create as needed.
 - `TokenRotator` cycles tokens per request; `RateLimiter` applies a sliding window across all tokens.
 - Tag normalization mirrors Python (`correct_tag`): uppercase, `O`→`0`, remove non-alnum, ensure leading `#`, and encodes `#` as `%23` in URLs.
+
+### Behavior Notes
+
+- `verifyPlayerToken(tag, token)`
+  - POSTs to `/players/{tag}/verifytoken` with JSON body `{ "token": "..." }`.
+  - Returns `true` when response JSON has `status` equal to `ok` (case-insensitive); returns `false` for other 2xx bodies or malformed JSON.
+  - Throws `NotFoundException` on 404 when the player tag does not exist.
+  - Throws `RuntimeException` for other non-2xx responses, mirroring error handling of other endpoints.

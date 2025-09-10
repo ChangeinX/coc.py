@@ -32,6 +32,13 @@ test {
     useJUnitPlatform()
 }
 
+// Javadoc generation: keep strictness reasonable for existing code
+tasks.withType(Javadoc).configureEach {
+    options.encoding = 'UTF-8'
+    // Relax doclint to avoid failing on missing tags while docs mature
+    options.addBooleanOption('Xdoclint:none', true)
+}
+
 // Simple runner for manual smoke testing login and getClan
 tasks.register('runLoginExample', JavaExec) {
     group = 'application'
