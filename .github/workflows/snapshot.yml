@@ -1,0 +1,69 @@
+name: Snapshot Publish coc-java
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test (Java ${{ matrix.java }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '17', '21', '23' ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.java }}
+          cache: 'gradle'
+
+      - name: Build
+        run: ./gradlew :coc-java:clean :coc-java:build --no-daemon --stacktrace
+
+  publish_snapshot:
+    name: Publish SNAPSHOT
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17 (publish)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Compute snapshot version
+        id: snapshot
+        run: |
+          set -euo pipefail
+          CURRENT=$(./gradlew -q :coc-java:properties | awk -F": " '/^version:/ {print $2}')
+          BASE=${CURRENT%-SNAPSHOT}
+          IFS='.' read -r MAJ MIN PAT <<< "$BASE"
+          if [[ "$PAT" =~ ^[0-9]+$ ]]; then
+            PAT=$((PAT+1))
+          fi
+          SNAPSHOT="$MAJ.$MIN.$PAT-SNAPSHOT"
+          echo "snapshot=$SNAPSHOT" >> "$GITHUB_OUTPUT"
+          echo "Computed snapshot version: $SNAPSHOT"
+
+      - name: Build
+        run: ./gradlew :coc-java:clean :coc-java:build --no-daemon --stacktrace
+
+      - name: Publish SNAPSHOT
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew -Pversion=${{ steps.snapshot.outputs.snapshot }} :coc-java:publish --no-daemon --stacktrace
+
