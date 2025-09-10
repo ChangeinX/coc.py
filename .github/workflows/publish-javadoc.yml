@@ -36,6 +36,16 @@ jobs:
         run: |
           touch coc-java/build/docs/javadoc/.nojekyll
 
+      - name: Add index.htm redirect for compatibility
+        run: |
+          cat > coc-java/build/docs/javadoc/index.htm <<'HTML'
+          <!DOCTYPE html>
+          <meta charset="utf-8">
+          <meta http-equiv="refresh" content="0; url=index.html">
+          <title>Redirecting to index.html</title>
+          <a href="index.html">Redirecting to index.html</a>
+          HTML
+
       - name: Publish to gh-pages/docs
         uses: peaceiris/actions-gh-pages@v3
         with:

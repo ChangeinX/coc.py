@@ -15,6 +15,10 @@ coc.py
    :target: https://ChangeinX.github.io/coc.py/
    :alt: Java Javadocs
 
+.. image:: https://github.com/ChangeinX/coc.py/actions/workflows/publish-javadoc.yml/badge.svg?branch=master
+   :target: https://github.com/ChangeinX/coc.py/actions/workflows/publish-javadoc.yml
+   :alt: Publish Javadoc CI Status
+
 
 Easy to use asynchronous Clash of Clans API wrapper in Python.
 
@@ -158,6 +162,7 @@ If you wish to run linting, pylint, black and flake8 have been setup and can be 
 Links
 ------
 - `coc.py Documentation <https://cocpy.readthedocs.io/en/latest/?>`_
+- `Java Javadocs Overview <https://changeinx.github.io/coc.py/overview-summary.html>`_
 - `Official Clash of Clans API Page <https://developer.clashofclans.com/>`_
 - `Clash of Clans API Discord Server <https://discord.gg/Eaja7gJ>`_
 
@@ -166,5 +171,4 @@ Disclaimer
 This content is not affiliated with, endorsed, sponsored, or specifically
 approved by Supercell and Supercell is not responsible for it.
 For more information see `Supercell's Fan Content Policy. <https://www.supercell.com/fan-content-policy.>`_
-
 
