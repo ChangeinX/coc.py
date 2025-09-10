@@ -66,6 +66,21 @@ Set env vars `COC_DEV_EMAIL` and `COC_DEV_PASSWORD`, then:
 - Browse Javadocs: https://changeinx.github.io/coc.py/
 - Direct overview: https://changeinx.github.io/coc.py/overview-summary.html
 
+### Docs Publishing (GitHub Pages)
+
+- Workflow: `.github/workflows/publish-javadoc.yml`.
+- Triggers: pushes to `master`/`main` (for changes under `coc-java/**`, workflow file, or Gradle files), and manual dispatch.
+- Build: runs `./gradlew :coc-java:javadoc` to generate docs in `coc-java/build/docs/javadoc`.
+- Publish: deploys to branch `gh-pages`, folder `docs/` using `peaceiris/actions-gh-pages`.
+  - Adds `.nojekyll` to avoid Jekyll filtering.
+  - Adds `index.htm` that redirects to `index.html` for compatibility.
+- GitHub Pages settings: Source `gh-pages`, Folder `/docs`.
+- Live docs URL: https://changeinx.github.io/coc.py/
+- Manual run: Actions → "Publish Javadoc" → Run workflow.
+- Troubleshooting:
+  - 404 after deploy: verify Pages settings (branch `gh-pages`, path `/docs`) and that `docs/index.html` exists on `gh-pages`.
+  - Pages build “errored”: re-run CI; ensure `.nojekyll` exists in `docs/`; allow up to ~10 minutes for CDN cache.
+
 ### Behavior Notes
 
 - `verifyPlayerToken(tag, token)`
