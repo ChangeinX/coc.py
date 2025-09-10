@@ -32,6 +32,10 @@ jobs:
       - name: Generate Javadoc
         run: ./gradlew --no-daemon :coc-java:javadoc
 
+      - name: Add .nojekyll into published folder
+        run: |
+          touch coc-java/build/docs/javadoc/.nojekyll
+
       - name: Publish to gh-pages/docs
         uses: peaceiris/actions-gh-pages@v3
         with:
