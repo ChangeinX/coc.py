@@ -4,7 +4,7 @@ Java library for ClanBoards. Published to GitHub Packages.
 
 - Group: `com.clanboards`
 - Artifact: `coc-java`
-- Latest release: `0.0.1`
+- Latest release: `0.1.0`
 - Snapshots: `0.0.1-SNAPSHOT` and newer
 - Java compatibility: compiled for Java 17; tested on Java 17, 21, and 23 in CI
 
@@ -34,9 +34,9 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.clanboards:coc-java:0.0.1'
+  implementation 'com.clanboards:coc-java:0.1.0'
   // For snapshots:
-  // implementation 'com.clanboards:coc-java:0.0.1-SNAPSHOT'
+  // implementation 'com.clanboards:coc-java:0.1.1-SNAPSHOT'
 }
 ```
 
@@ -55,9 +55,9 @@ repositories {
 }
 
 dependencies {
-  implementation("com.clanboards:coc-java:0.0.1")
+  implementation("com.clanboards:coc-java:0.1.0")
   // Snapshots:
-  // implementation("com.clanboards:coc-java:0.0.1-SNAPSHOT")
+  // implementation("com.clanboards:coc-java:0.1.1-SNAPSHOT")
 }
 ```
 
@@ -81,7 +81,7 @@ dependencies {
   <dependency>
     <groupId>com.clanboards</groupId>
     <artifactId>coc-java</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
   </dependency>
 </dependencies>
 ```
