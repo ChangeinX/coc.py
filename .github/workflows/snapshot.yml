@@ -44,19 +44,26 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Compute snapshot version
+      - name: Compute snapshot version from latest tag
         id: snapshot
+        shell: bash
         run: |
           set -euo pipefail
-          CURRENT=$(./gradlew -q :coc-java:properties | awk -F": " '/^version:/ {print $2}')
-          BASE=${CURRENT%-SNAPSHOT}
-          IFS='.' read -r MAJ MIN PAT <<< "$BASE"
-          if [[ "$PAT" =~ ^[0-9]+$ ]]; then
-            PAT=$((PAT+1))
+          LATEST=$(git tag --list 'v*' --sort=-v:refname | head -n1 || true)
+          if [[ -z "$LATEST" ]]; then
+            BASE="0.0.0"
+          else
+            BASE="${LATEST#v}"
           fi
+          IFS='.' read -r MAJ MIN PAT <<< "$BASE"
+          if [[ ! "$MAJ" =~ ^[0-9]+$ || ! "$MIN" =~ ^[0-9]+$ || ! "$PAT" =~ ^[0-9]+$ ]]; then
+            echo "Unexpected base version '$BASE', defaulting to 0.0.0" >&2
+            MAJ=0; MIN=0; PAT=0
+          fi
+          PAT=$((PAT+1))
           SNAPSHOT="$MAJ.$MIN.$PAT-SNAPSHOT"
           echo "snapshot=$SNAPSHOT" >> "$GITHUB_OUTPUT"
-          echo "Computed snapshot version: $SNAPSHOT"
+          echo "Computed snapshot version: $SNAPSHOT (from latest tag '$LATEST')"
 
       - name: Build
         run: ./gradlew :coc-java:clean :coc-java:build --no-daemon --stacktrace
@@ -66,4 +73,3 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew -Pversion=${{ steps.snapshot.outputs.snapshot }} :coc-java:publish --no-daemon --stacktrace
-
