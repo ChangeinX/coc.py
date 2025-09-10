@@ -39,7 +39,7 @@ loadScripts(document, 'script');</script>
 <div>
 <ul class="sub-nav-list">
 <li>Package:&nbsp;</li>
-<li>Description&nbsp;|&nbsp;</li>
+<li><a href="#package-description">Description</a>&nbsp;|&nbsp;</li>
 <li><a href="#related-package-summary">Related Packages</a>&nbsp;|&nbsp;</li>
 <li><a href="#class-summary">Classes and Interfaces</a></li>
 </ul>
@@ -59,6 +59,21 @@ loadScripts(document, 'script');</script>
 </div>
 <hr>
 <div class="package-signature">package <span class="element-name">com.clanboards</span></div>
+<section class="package-description" id="package-description">
+<div class="block">Core public API for the Clash of Clans Java client.
+
+ <p>Key types:
+ - <a href="CocClient.html" title="class in com.clanboards"><code>CocClient</code></a> – main entry point for endpoints
+ - Data models like <a href="Clan.html" title="class in com.clanboards"><code>Clan</code></a>, <a href="Player.html" title="class in com.clanboards"><code>Player</code></a>
+ - Exceptions: <a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions"><code>NotFoundException</code></a>,
+   <a href="exceptions/PrivateWarLogException.html" title="class in com.clanboards.exceptions"><code>PrivateWarLogException</code></a>
+
+ <p>Design highlights:
+ - Pluggable HTTP via <a href="http/HttpTransport.html" title="interface in com.clanboards.http"><code>HttpTransport</code></a>
+ - Token rotation (<a href="token/TokenRotator.html" title="class in com.clanboards.token"><code>TokenRotator</code></a>) and rate limiting
+   (<a href="throttle/RateLimiter.html" title="class in com.clanboards.throttle"><code>RateLimiter</code></a>)
+ - Tag normalization utilities in <a href="util/TagUtil.html" title="class in com.clanboards.util"><code>TagUtil</code></a></div>
+</section>
 <section class="summary">
 <ul class="summary-list">
 <li>
@@ -68,21 +83,36 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Package</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><a href="auth/package-summary.html">com.clanboards.auth</a></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Authentication helpers for acquiring API tokens from
+ developer.clashofclans.com.</div>
+</div>
 <div class="col-first odd-row-color"><a href="examples/package-summary.html">com.clanboards.examples</a></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Small runnable examples for manual smoke testing.</div>
+</div>
 <div class="col-first even-row-color"><a href="exceptions/package-summary.html">com.clanboards.exceptions</a></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><a href="http/package-summary.html">com.clanboards.http</a></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">HTTP abstractions decoupling transport concerns from the client.</div>
+</div>
 <div class="col-first even-row-color"><a href="throttle/package-summary.html">com.clanboards.throttle</a></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Token-aware rate limiting utilities.</div>
+</div>
 <div class="col-first odd-row-color"><a href="token/package-summary.html">com.clanboards.token</a></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Token rotation utilities for distributing requests across multiple tokens.</div>
+</div>
 <div class="col-first even-row-color"><a href="util/package-summary.html">com.clanboards.util</a></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">General utilities used across the client.</div>
+</div>
 <div class="col-first odd-row-color"><a href="wars/package-summary.html">com.clanboards.wars</a></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Models and helpers for clan wars and league play.</div>
+</div>
 </div>
 </div>
 </li>
