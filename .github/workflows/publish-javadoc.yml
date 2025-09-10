@@ -3,7 +3,7 @@ name: Publish Javadoc
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
     paths:
       - 'coc-java/**'
       - '.github/workflows/publish-javadoc.yml'
@@ -40,4 +40,3 @@ jobs:
           publish_dir: coc-java/build/docs/javadoc
           destination_dir: docs
           enable_jekyll: false
-
