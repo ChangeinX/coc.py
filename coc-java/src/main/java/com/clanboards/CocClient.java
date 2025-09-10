@@ -244,7 +244,11 @@ public class CocClient {
                 .body(body)
                 .build();
         HttpResponse resp = transport.execute(req);
-        if (resp.getStatusCode() < 200 || resp.getStatusCode() >= 300) return false;
+        if (resp.getStatusCode() == 404) throw new NotFoundException("Player not found: " + corrected);
+        if (resp.getStatusCode() < 200 || resp.getStatusCode() >= 300) {
+            String respBody = new String(resp.getBody(), java.nio.charset.StandardCharsets.UTF_8);
+            throw new RuntimeException("HTTP " + resp.getStatusCode() + " calling verifyPlayerToken: " + respBody);
+        }
         try {
             var node = mapper.readTree(resp.getBody());
             String status = node.path("status").asText("");

@@ -52,6 +52,50 @@ class PlayerAndMetaTest {
     }
 
     @Test
+    void verifyPlayerToken_throwsNotFound_on404() {
+        HttpTransport fake = req -> new HttpResponse(404, "{}".getBytes(StandardCharsets.UTF_8));
+        CocClient client = new CocClient(fake, singleTokenAuth("t"));
+        client.login("e","p");
+        assertThrows(com.clanboards.exceptions.NotFoundException.class,
+                () -> client.verifyPlayerToken("#MISSING", "tok"));
+    }
+
+    @Test
+    void verifyPlayerToken_returnsFalse_onNonOkStatus() {
+        String body = "{\"status\":\"invalid\"}";
+        HttpTransport fake = req -> new HttpResponse(200, body.getBytes(StandardCharsets.UTF_8));
+        CocClient client = new CocClient(fake, singleTokenAuth("t"));
+        client.login("e","p");
+        assertFalse(client.verifyPlayerToken("#ABC", "tok"));
+    }
+
+    @Test
+    void verifyPlayerToken_returnsFalse_onMalformedJson() {
+        String body = "{this is not json";
+        HttpTransport fake = req -> new HttpResponse(200, body.getBytes(StandardCharsets.UTF_8));
+        CocClient client = new CocClient(fake, singleTokenAuth("t"));
+        client.login("e","p");
+        assertFalse(client.verifyPlayerToken("#ABC", "tok"));
+    }
+
+    @Test
+    void verifyPlayerToken_acceptsCaseInsensitiveOk() {
+        String body = "{\"status\":\"OK\"}";
+        HttpTransport fake = req -> new HttpResponse(200, body.getBytes(StandardCharsets.UTF_8));
+        CocClient client = new CocClient(fake, singleTokenAuth("t"));
+        client.login("e","p");
+        assertTrue(client.verifyPlayerToken("#ABC", "tok"));
+    }
+
+    @Test
+    void verifyPlayerToken_throwsRuntime_on5xx() {
+        HttpTransport fake = req -> new HttpResponse(500, "error".getBytes(StandardCharsets.UTF_8));
+        CocClient client = new CocClient(fake, singleTokenAuth("t"));
+        client.login("e","p");
+        assertThrows(RuntimeException.class, () -> client.verifyPlayerToken("#ABC", "tok"));
+    }
+
+    @Test
     void getLabels_returnsItems() {
         String json = "{\n  \"items\": [ {\"id\": 1, \"name\": \"Clan Wars\"}, {\"id\": 2, \"name\": \"Clan Games\"} ]\n}";
         HttpTransport fake = req -> new HttpResponse(200, json.getBytes(StandardCharsets.UTF_8));

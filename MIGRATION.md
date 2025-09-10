@@ -24,6 +24,8 @@ Only completed items are placed here, not a TODO list.
   - `ClanMember` and `getMembers(clanTag, limit, after, before)`
   - `searchClans(name, limit)`
   - `Player` and `getPlayer(tag)`, `verifyPlayerToken(tag, token)`
+    - Parity with Python: 404 → `NotFoundException`, other non-2xx → `RuntimeException`,
+      2xx with JSON `{"status":"ok"}` returns true (case-insensitive), otherwise false
   - Labels: `getClanLabels()`, `getPlayerLabels()`
   - Locations: `searchLocations(limit)`, `getLocation(id)`
   - Wars: `getWarLog(clanTag, limit)`, `getCurrentWar(clanTag)`

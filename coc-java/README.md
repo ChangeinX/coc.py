@@ -3,28 +3,20 @@
 [![Publish Javadoc](https://github.com/ChangeinX/coc.py/actions/workflows/publish-javadoc.yml/badge.svg?branch=master)](https://github.com/ChangeinX/coc.py/actions/workflows/publish-javadoc.yml)
 [![Javadocs](https://img.shields.io/badge/docs-Javadoc-blue)](https://ChangeinX.github.io/coc.py/)
 
-Java library (in-progress) for Clash of Clans API.
+Concise Java client for the Clash of Clans API. This module is the new primary implementation and follows strict TDD.
 
-This module starts the migration from the legacy Python client to Java with TDD. It currently supports:
+Core features (parity with Python where applicable):
 
-- Login via developer.clashofclans.com using `DevSiteAuthenticator`
-- Multi-token acquisition and round-robin token rotation
-- Simple sliding-window throttling across all tokens
-- Fetch clan info: `getClan(tag)`
-- Search clans: `searchClans(name, limit)`
-- List clan members: `getMembers(clanTag, limit, after, before)`
+- Auth via developer.clashofclans.com (`DevSiteAuthenticator`)
+- Multi-token acquisition + round‑robin rotation
+- Sliding‑window rate limiting across all tokens
+- Clans: `getClan(tag)`, `searchClans(name, limit)`, `getMembers(tag, ...)`
 - Players: `getPlayer(tag)`, `verifyPlayerToken(tag, token)`
 - Labels: `getClanLabels()`, `getPlayerLabels()`
 - Locations: `searchLocations(limit)`, `getLocation(id)`
-- Wars: `getWarLog(clanTag, limit)`, `getCurrentWar(clanTag)`
-- CWL: `getClanWarLeagueGroup(clanTag)`, `getCwlWar(warTag)`
-- Rankings: `getLocationClanRankings(...)`, `getLocationPlayerRankings(...)`,
-  `getLocationBuilderBaseClanRankings(...)`, `getLocationBuilderBasePlayerRankings(...)`, `getLocationCapitalClanRankings(...)`
-
-## Build & Test
-
-- Run tests: `./gradlew :coc-java:test`
-- Build: `./gradlew :coc-java:build`
+- Wars: `getWarLog(tag, limit)`, `getCurrentWar(tag)`
+- CWL: `getClanWarLeagueGroup(tag)`, `getCwlWar(warTag)`
+- Rankings: location clan/player, builder base, capital rankings
 
 ## Quick Start
 
@@ -42,49 +34,77 @@ var client = new CocClient(transport, authenticator);
 client.login(System.getenv("COC_DEV_EMAIL"), System.getenv("COC_DEV_PASSWORD"));
 Clan clan = client.getClan("#2PP");
 
-// Or request multiple tokens and set per-token rate
+// Or request multiple tokens and set per‑token rate
 client.login(System.getenv("COC_DEV_EMAIL"), System.getenv("COC_DEV_PASSWORD"), 3, 30);
 ```
 
-## Example Runner
+## Build & Test
 
-Set env vars `COC_DEV_EMAIL` and `COC_DEV_PASSWORD`, then:
+- Run tests: `./gradlew :coc-java:test`
+- Build: `./gradlew :coc-java:build`
+- Generate docs: `./gradlew :coc-java:javadoc`
 
+## Module Layout
+
+- Source: `coc-java/src/main/java/com/clanboards/**`
+- Tests: `coc-java/src/test/java/com/clanboards/**`
+- Test fixtures: `coc-java/src/test/resources/**`
+- Example: `com.clanboards.examples.LoginExample`
+
+## API Cheatsheet
+
+- Clans: `getClan(tag)`, `searchClans(name, limit)`, `getMembers(tag, limit, after, before)`
+- Players: `getPlayer(tag)`, `verifyPlayerToken(tag, token)`
+- Labels: `getClanLabels()`, `getPlayerLabels()`
+- Locations: `searchLocations(limit)`, `getLocation(id)`
+- Wars: `getWarLog(clanTag, limit)`, `getCurrentWar(clanTag)`
+- CWL: `getClanWarLeagueGroup(clanTag)`, `getCwlWar(warTag)`
+- Rankings: `getLocationClanRankings`, `getLocationPlayerRankings`, `getLocationBuilderBaseClanRankings`, `getLocationBuilderBasePlayerRankings`, `getLocationCapitalClanRankings`
+
+## Error Semantics
+
+- 404 → `NotFoundException`
+- Private war log (403) → `PrivateWarLogException`
+- Other non‑2xx → `RuntimeException` (or subtypes as added)
+- `verifyPlayerToken` returns `true` iff JSON `status` equals `ok` (case‑insensitive) on 2xx; otherwise `false`
+
+## Tokens & Throttling
+
+- Tokens: Managed by `DevSiteAuthenticator` using the dev site API (list/revoke/create).
+- Rotation: `TokenRotator` cycles tokens per request.
+- Rate limiting: `RateLimiter` applies a sliding window across all tokens. Default is 10 req/sec/token; override via `login(email, pass, tokenCount, perTokenRate)` or `loginWithTokens(tokens, perTokenRate)`.
+
+## Contributing (TDD)
+
+- Write a failing JUnit 5 test first under `src/test/java`.
+- Use hermetic tests: inject a fake `HttpTransport` and feed JSON from `src/test/resources`.
+- Implement the smallest change in `src/main/java` to pass tests.
+- Run `./gradlew :coc-java:test` until green; then refactor safely.
+
+Test pattern example (pseudo‑code):
+
+```java
+HttpTransport transport = (req) -> HttpResponse.ok(json("players/FOUND.json"));
+var client = new CocClient(transport, authenticator);
+assertEquals("#TAG", client.getPlayer("#tag").getTag());
 ```
-./gradlew :coc-java:runLoginExample --args '#2PP'
-```
 
-## Design Notes
+## Documentation
 
-- HTTP layer is pluggable via `HttpTransport`; tests inject fakes to avoid network.
-- `DevSiteAuthenticator` mirrors Python logic: login, derive IP from temporary token, list keys, revoke mismatched, create as needed.
-- `TokenRotator` cycles tokens per request; `RateLimiter` applies a sliding window across all tokens.
-- Tag normalization mirrors Python (`correct_tag`): uppercase, `O`→`0`, remove non-alnum, ensure leading `#`, and encodes `#` as `%23` in URLs.
-
-### Documentation
-
-- Browse Javadocs: https://changeinx.github.io/coc.py/
-- Direct overview: https://changeinx.github.io/coc.py/overview-summary.html
+- Javadoc: https://changeinx.github.io/coc.py/
+- Overview: https://changeinx.github.io/coc.py/overview-summary.html
 
 ### Docs Publishing (GitHub Pages)
 
-- Workflow: `.github/workflows/publish-javadoc.yml`.
-- Triggers: pushes to `master`/`main` (for changes under `coc-java/**`, workflow file, or Gradle files), and manual dispatch.
-- Build: runs `./gradlew :coc-java:javadoc` to generate docs in `coc-java/build/docs/javadoc`.
-- Publish: deploys to branch `gh-pages`, folder `docs/` using `peaceiris/actions-gh-pages`.
-  - Adds `.nojekyll` to avoid Jekyll filtering.
-  - Adds `index.htm` that redirects to `index.html` for compatibility.
-- GitHub Pages settings: Source `gh-pages`, Folder `/docs`.
-- Live docs URL: https://changeinx.github.io/coc.py/
-- Manual run: Actions → "Publish Javadoc" → Run workflow.
-- Troubleshooting:
-  - 404 after deploy: verify Pages settings (branch `gh-pages`, path `/docs`) and that `docs/index.html` exists on `gh-pages`.
-  - Pages build “errored”: re-run CI; ensure `.nojekyll` exists in `docs/`; allow up to ~10 minutes for CDN cache.
+- Workflow: `.github/workflows/publish-javadoc.yml`
+- Triggers: push to `master`/`main` (changes in `coc-java/**` or Gradle/workflow files) and manual dispatch
+- Build: `./gradlew :coc-java:javadoc` → `coc-java/build/docs/javadoc`
+- Publish: CI deploys to `gh-pages` branch under `docs/`
+  - Includes `.nojekyll` and an `index.htm` redirect for compatibility
+- Pages settings: Source `gh-pages`, Folder `/docs`
+  - Live URL: https://changeinx.github.io/coc.py/
 
-### Behavior Notes
+## Notes
 
-- `verifyPlayerToken(tag, token)`
-  - POSTs to `/players/{tag}/verifytoken` with JSON body `{ "token": "..." }`.
-  - Returns `true` when response JSON has `status` equal to `ok` (case-insensitive); returns `false` for other 2xx bodies or malformed JSON.
-  - Throws `NotFoundException` on 404 when the player tag does not exist.
-  - Throws `RuntimeException` for other non-2xx responses, mirroring error handling of other endpoints.
+- HTTP layer is pluggable via `HttpTransport`.
+- Tag normalization mirrors Python (`correct_tag`): uppercase, `O→0`, strip non‑alnum, ensure leading `#`, URL‑encode as `%23`.
