@@ -9,6 +9,7 @@ import com.clanboards.http.HttpTransport;
 import com.clanboards.throttle.RateLimiter;
 import com.clanboards.token.TokenRotator;
 import com.clanboards.util.TagUtil;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -25,18 +26,32 @@ public class CocClient {
     private final Authenticator authenticator;
     private final ObjectMapper mapper = new ObjectMapper();
     private final String baseUrl;
+    private final boolean rawAttribute;
 
     private volatile TokenRotator tokenRotator;
     private volatile RateLimiter rateLimiter; // total limit across tokens per window
 
     public CocClient(HttpTransport transport, Authenticator authenticator) {
-        this(transport, authenticator, "https://api.clashofclans.com/v1");
+        this(transport, authenticator, "https://api.clashofclans.com/v1", false);
+    }
+
+    public CocClient(HttpTransport transport, Authenticator authenticator, boolean rawAttribute) {
+        this(transport, authenticator, "https://api.clashofclans.com/v1", rawAttribute);
     }
 
     public CocClient(HttpTransport transport, Authenticator authenticator, String baseUrl) {
+        this(transport, authenticator, baseUrl, false);
+    }
+
+    public CocClient(HttpTransport transport, Authenticator authenticator, String baseUrl, boolean rawAttribute) {
         this.transport = Objects.requireNonNull(transport, "transport");
         this.authenticator = Objects.requireNonNull(authenticator, "authenticator");
         this.baseUrl = Objects.requireNonNull(baseUrl, "baseUrl");
+        this.rawAttribute = rawAttribute;
+    }
+
+    public boolean isRawAttributeEnabled() {
+        return rawAttribute;
     }
 
     /** Obtain one token with default throttling (10 req/sec per token). */
@@ -92,7 +107,7 @@ public class CocClient {
             throw new RuntimeException("HTTP " + sc + " calling getClan: " + body);
         }
         try {
-            return mapper.readValue(resp.getBody(), Clan.class);
+            return decodeClan(resp.getBody());
         } catch (IOException e) {
             throw new RuntimeException("Failed to parse clan JSON", e);
         }
@@ -135,7 +150,7 @@ public class CocClient {
             java.util.List<Clan> result = new java.util.ArrayList<>();
             if (items.isArray()) {
                 for (var it : items) {
-                    result.add(mapper.convertValue(it, Clan.class));
+                    result.add(convert(it, Clan.class));
                 }
             }
             return result;
@@ -183,7 +198,7 @@ public class CocClient {
             java.util.List<ClanMember> result = new java.util.ArrayList<>();
             if (items.isArray()) {
                 for (var it : items) {
-                    result.add(mapper.convertValue(it, ClanMember.class));
+                    result.add(convert(it, ClanMember.class));
                 }
             }
             return result;
@@ -197,6 +212,35 @@ public class CocClient {
             return java.net.URLEncoder.encode(s, java.nio.charset.StandardCharsets.UTF_8);
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private Clan decodeClan(byte[] body) throws IOException {
+        if (!rawAttribute) {
+            return mapper.readValue(body, Clan.class);
+        }
+        JsonNode node = mapper.readTree(body);
+        Clan clan = mapper.treeToValue(node, Clan.class);
+        attachRawJson(clan, node);
+        return clan;
+    }
+
+    private <T> T convert(JsonNode node, Class<T> type) {
+        T value = mapper.convertValue(node, type);
+        attachRawJson(value, node);
+        return value;
+    }
+
+    private void attachRawJson(Object value, JsonNode raw) {
+        if (!rawAttribute || value == null || raw == null || raw.isMissingNode()) {
+            return;
+        }
+        if (value instanceof Clan clan) {
+            clan.attachRawJson(raw);
+        } else if (value instanceof ClanMember member) {
+            member.attachRawJson(raw);
+        } else if (value instanceof RankedClan rankedClan) {
+            rankedClan.attachRawJson(raw);
         }
     }
 
@@ -394,7 +438,7 @@ public class CocClient {
             var node = mapper.readTree(resp.getBody());
             var items = node.path("items");
             java.util.List<RankedClan> result = new java.util.ArrayList<>();
-            if (items.isArray()) for (var it : items) result.add(mapper.convertValue(it, RankedClan.class));
+            if (items.isArray()) for (var it : items) result.add(convert(it, RankedClan.class));
             return result;
         } catch (Exception e) { throw new RuntimeException("Failed to parse ranked clans JSON", e); }
     }

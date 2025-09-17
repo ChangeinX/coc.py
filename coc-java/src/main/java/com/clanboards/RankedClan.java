@@ -1,7 +1,9 @@
 package com.clanboards;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RankedClan {
@@ -23,6 +25,9 @@ public class RankedClan {
     @JsonProperty("previousRank")
     private int previousRank;
 
+    @JsonIgnore
+    private transient JsonNode rawJson;
+
     public String getTag() { return tag; }
     public String getName() { return name; }
     public int getLevel() { return level; }
@@ -32,5 +37,10 @@ public class RankedClan {
     public Integer getCapitalPoints() { return capitalPoints; }
     public int getRank() { return rank; }
     public int getPreviousRank() { return previousRank; }
-}
 
+    public JsonNode getRawJson() { return rawJson; }
+
+    void attachRawJson(JsonNode rawJson) {
+        this.rawJson = rawJson;
+    }
+}

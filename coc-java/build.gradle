@@ -50,6 +50,13 @@ tasks.register('runLoginExample', JavaExec) {
     mainClass = 'com.clanboards.examples.LoginExample'
 }
 
+tasks.register('runClanRawDump', JavaExec) {
+    group = 'application'
+    description = 'Prints clan JSON via com.clanboards.examples.ClanRawJsonExample'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.clanboards.examples.ClanRawJsonExample'
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {

@@ -7,10 +7,10 @@ import com.clanboards.http.DefaultHttpTransport;
 
 public class LoginExample {
     public static void main(String[] args) {
-        String email = System.getenv("COC_DEV_EMAIL");
-        String password = System.getenv("COC_DEV_PASSWORD");
+        String email = System.getenv("COC_EMAIL");
+        String password = System.getenv("COC_PASSWORD");
         if (email == null || password == null) {
-            System.err.println("Please set COC_DEV_EMAIL and COC_DEV_PASSWORD environment variables.");
+            System.err.println("Please set COC_EMAIL and COC_PASSWORD environment variables.");
             System.exit(1);
         }
 

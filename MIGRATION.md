@@ -41,10 +41,12 @@ Only completed items are placed here, not a TODO list.
   - Gold Pass: `getCurrentGoldPassSeason()`
   - Tag normalization and URL encoding equivalent to Python’s `correct_tag`
   - 404 mapped to `NotFoundException`
+- Optional raw JSON exposure for clan search/detail results behind `CocClient`'s `rawAttribute` setting, matching Python's `Client.raw_attribute`
 - TDD foundation
   - Hermetic unit tests for client, tag utilities, and authenticator behaviors
 
 ## How to Validate
 
 - Unit tests: `./gradlew :coc-java:test`
-- Live smoke test: `./gradlew :coc-java:runLoginExample --args '#2PP'` with `COC_DEV_EMAIL` and `COC_DEV_PASSWORD` set
+- Live smoke test: `./gradlew :coc-java:runLoginExample --args '#2PP'` with `COC_EMAIL` and `COC_PASSWORD` set
+- Cross-language parity: `python integration/compare_clan_responses.py` with `COC_EMAIL`/`COC_PASSWORD` exported
