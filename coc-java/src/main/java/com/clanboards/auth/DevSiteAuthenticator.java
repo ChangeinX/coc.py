@@ -12,8 +12,23 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
- * Authenticator that logs into developer.clashofclans.com and finds/creates API keys.
- * It mirrors the Python client's key initialization logic at a high level.
+ * Production authenticator that manages API keys through the developer portal.
+ *
+ * This implementation automatically handles the full authentication workflow:
+ * <ul>
+ * <li>Logs into developer.clashofclans.com with email/password credentials</li>
+ * <li>Determines the client's IP address from temporary tokens</li>
+ * <li>Searches for existing compatible API keys</li>
+ * <li>Creates new keys when needed, respecting platform limits</li>
+ * <li>Manages key lifecycle including cleanup of mismatched keys</li>
+ * </ul>
+ *
+ * The authenticator is designed to be robust and handle common scenarios like
+ * IP address changes, key limits, and temporary authentication failures.
+ *
+ * Thread-safety: This class is thread-safe for concurrent authentication attempts.
+ *
+ * @see Authenticator
  */
 public class DevSiteAuthenticator implements Authenticator {
     public static final String DEFAULT_KEY_NAME = "Created with coc-java Client";
@@ -26,10 +41,28 @@ public class DevSiteAuthenticator implements Authenticator {
     private final int keyCount;
     private final String fixedIp; // optional override
 
+    /**
+     * Creates an authenticator with default settings.
+     *
+     * Uses default key name, clash scope, single key, and automatic IP detection.
+     *
+     * @param transport HTTP transport for making requests to the developer portal
+     * @throws NullPointerException if transport is null
+     */
     public DevSiteAuthenticator(HttpTransport transport) {
         this(transport, DEFAULT_KEY_NAME, DEFAULT_SCOPE, 1, null);
     }
 
+    /**
+     * Creates an authenticator with custom configuration.
+     *
+     * @param transport HTTP transport for making requests to the developer portal
+     * @param keyName name to assign to created API keys (null uses default)
+     * @param keyScope scope for API keys ("clash" for standard access)
+     * @param keyCount maximum number of keys to manage (clamped to 1-10)
+     * @param ip fixed IP address for keys (null for automatic detection)
+     * @throws NullPointerException if transport is null
+     */
     public DevSiteAuthenticator(HttpTransport transport, String keyName, String keyScope, int keyCount, String ip) {
         this.transport = Objects.requireNonNull(transport, "transport");
         this.keyName = keyName != null ? keyName : DEFAULT_KEY_NAME;
@@ -38,6 +71,23 @@ public class DevSiteAuthenticator implements Authenticator {
         this.fixedIp = ip; // can be null -> derive from temporary token
     }
 
+    /**
+     * Obtains API tokens by authenticating with the developer portal.
+     *
+     * This method performs the complete authentication and key management workflow:
+     * 1. Logs into the developer portal with provided credentials
+     * 2. Determines the client IP address (fixed or automatic)
+     * 3. Searches for existing compatible API keys
+     * 4. Creates new keys if needed, cleaning up incompatible ones first
+     * 5. Returns the requested number of valid tokens
+     *
+     * @param email developer account email
+     * @param password developer account password
+     * @param count number of tokens requested (clamped to 1-10)
+     * @return list of valid API tokens
+     * @throws IllegalStateException if credentials are invalid
+     * @throws RuntimeException if authentication or key management fails
+     */
     @Override
     public List<String> obtainTokens(String email, String password, int count) {
         String ip = loginAndDetermineIp(email, password);
