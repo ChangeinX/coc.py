@@ -1,6 +1,6 @@
 # Repository Guidelines
 
-Note: This repository is migrating from Python to Java. Java is the new primary implementation, developed with strict Test‑Driven Development (TDD). Python code and tests remain as legacy until migration completes.
+Note: This repository is migrating from Python to Java. Java is the new primary implementation, developed with strict Test‑Driven Development (TDD). Python code and tests remain as legacy until migration completes and not pertinent. Frozen fork, will not re-sync with main. Java testing only.
 
 ## Java Migration & TDD (New Primary)
 - Module: `coc-java/` (Gradle, Groovy DSL). Use the standard layout: `src/main/java`, `src/main/resources`, `src/test/java`, `src/test/resources`.
@@ -32,6 +32,7 @@ Note: This repository is migrating from Python to Java. Java is the new primary 
   - Coverage (if configured): `./gradlew :coc-java:jacocoTestReport`
   - Publish to GitHub Packages: `./gradlew :coc-java:publish` (see Publishing section for credentials setup).
 - Python (legacy):
+  - Not pertinent. Frozen fork, will not re-sync with main. Java testing only.
   - Create env and install: `python -m venv .venv && source .venv/bin/activate && pip install -e .`.
   - Docs: `pip install -r doc_requirements.txt && (cd docs && make html)`.
   - Run tests: `python -m unittest discover -s tests -p 'test_*.py'` (example: `python -m unittest tests/test_clans.py`).
