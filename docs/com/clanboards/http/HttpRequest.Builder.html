@@ -81,6 +81,10 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public static final class </span><span class="element-name type-name-label">HttpRequest.Builder</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Builder for constructing immutable HttpRequest instances.
+
+ Provides a fluent interface for setting request properties.
+ Thread-safety: Builder instances are not thread-safe.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -110,20 +114,30 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#body(byte%5B%5D)" class="member-name-link">body</a><wbr>(byte[]&nbsp;body)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the request body.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#build()" class="member-name-link">build</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Builds an immutable HttpRequest instance.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#header(java.lang.String,java.lang.String)" class="member-name-link">header</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;value)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Adds an HTTP header to the request.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#method(com.clanboards.http.HttpRequest.Method)" class="member-name-link">method</a><wbr>(<a href="HttpRequest.Method.html" title="enum class in com.clanboards.http">HttpRequest.Method</a>&nbsp;method)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the HTTP method for the request.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#url(java.lang.String)" class="member-name-link">url</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;url)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the URL for the request.</div>
+</div>
 </div>
 </div>
 </div>
@@ -159,12 +173,26 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="method(com.clanboards.http.HttpRequest.Method)">
 <h3>method</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></span>&nbsp;<span class="element-name">method</span><wbr><span class="parameters">(<a href="HttpRequest.Method.html" title="enum class in com.clanboards.http">HttpRequest.Method</a>&nbsp;method)</span></div>
+<div class="block">Sets the HTTP method for the request.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>method</code> - HTTP method to use</dd>
+<dt>Returns:</dt>
+<dd>this builder for method chaining</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="url(java.lang.String)">
 <h3>url</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></span>&nbsp;<span class="element-name">url</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;url)</span></div>
+<div class="block">Sets the URL for the request.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>url</code> - complete request URL</dd>
+<dt>Returns:</dt>
+<dd>this builder for method chaining</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -172,18 +200,38 @@ loadScripts(document, 'script');</script>
 <h3>header</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></span>&nbsp;<span class="element-name">header</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;value)</span></div>
+<div class="block">Adds an HTTP header to the request.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>name</code> - header name</dd>
+<dd><code>value</code> - header value</dd>
+<dt>Returns:</dt>
+<dd>this builder for method chaining</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="body(byte[])">
 <h3>body</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></span>&nbsp;<span class="element-name">body</span><wbr><span class="parameters">(byte[]&nbsp;body)</span></div>
+<div class="block">Sets the request body.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>body</code> - request body bytes (null will be converted to empty array)</dd>
+<dt>Returns:</dt>
+<dd>this builder for method chaining</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="build()">
 <h3>build</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a></span>&nbsp;<span class="element-name">build</span>()</div>
+<div class="block">Builds an immutable HttpRequest instance.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>new HttpRequest with configured properties</dd>
+</dl>
 </section>
 </li>
 </ul>

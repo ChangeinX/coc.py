@@ -64,10 +64,40 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="package-signature">package <span class="element-name">com.clanboards.http</span></div>
 <section class="package-description" id="package-description">
-<div class="block">HTTP abstractions decoupling transport concerns from the client.
+<div class="block">HTTP transport abstractions for pluggable networking implementations.
 
- <p>Tests inject fakes of <a href="HttpTransport.html" title="interface in com.clanboards.http"><code>HttpTransport</code></a> to avoid
- network I/O. Production uses <a href="DefaultHttpTransport.html" title="class in com.clanboards.http"><code>DefaultHttpTransport</code></a>.</div>
+ <p>This package provides a clean abstraction layer for HTTP communication,
+ allowing the client to work with different transport implementations. This
+ design enables easy testing with mock transports and customization of
+ HTTP behavior for different environments.
+
+ <h2>Core Components</h2>
+ <ul>
+ <li><a href="HttpTransport.html" title="interface in com.clanboards.http"><code>HttpTransport</code></a> - Main transport interface</li>
+ <li><a href="DefaultHttpTransport.html" title="class in com.clanboards.http"><code>DefaultHttpTransport</code></a> - Production implementation using Java 11+ HttpClient</li>
+ <li><a href="HttpRequest.html" title="class in com.clanboards.http"><code>HttpRequest</code></a> - Immutable request model</li>
+ <li><a href="HttpResponse.html" title="class in com.clanboards.http"><code>HttpResponse</code></a> - Immutable response model</li>
+ </ul>
+
+ <h2>Usage Pattern</h2>
+ <pre><code>
+ // Production usage
+ HttpTransport transport = new DefaultHttpTransport();
+
+ // Testing with mock
+ HttpTransport mockTransport = new FakeHttpTransport();
+ </code></pre>
+
+ <p>All implementations must be thread-safe for concurrent use.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="HttpTransport.html" title="interface in com.clanboards.http"><code>HttpTransport</code></a></li>
+<li><a href="DefaultHttpTransport.html" title="class in com.clanboards.http"><code>DefaultHttpTransport</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -79,7 +109,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><a href="../package-summary.html">com.clanboards</a></div>
 <div class="col-last even-row-color">
-<div class="block">Core public API for the Clash of Clans Java client.</div>
+<div class="block">Core public API for the Clash of Clans Java client library.</div>
 </div>
 </div>
 </div>
@@ -93,23 +123,27 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="DefaultHttpTransport.html" title="class in com.clanboards.http">DefaultHttpTransport</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Default implementation based on Java 11 HttpClient with cookie support.</div>
+<div class="block">Default HTTP transport implementation using Java 11+ HttpClient.</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
-<div class="block">Simple immutable HTTP request model used by CocClient's pluggable transport.</div>
+<div class="block">Immutable HTTP request model used by the pluggable transport system.</div>
 </div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Builder for constructing immutable HttpRequest instances.</div>
+</div>
 <div class="col-first odd-row-color class-summary class-summary-tab3"><a href="HttpRequest.Method.html" title="enum class in com.clanboards.http">HttpRequest.Method</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab3">&nbsp;</div>
+<div class="col-last odd-row-color class-summary class-summary-tab3">
+<div class="block">Supported HTTP methods for API requests.</div>
+</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="HttpResponse.html" title="class in com.clanboards.http">HttpResponse</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Simple HTTP response model.</div>
+<div class="block">Immutable HTTP response model containing status code and response body.</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab1"><a href="HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab1">
-<div class="block">Pluggable HTTP transport used by CocClient to perform requests.</div>
+<div class="block">Abstraction for HTTP transport used by CocClient to execute API requests.</div>
 </div>
 </div>
 </div>

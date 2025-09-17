@@ -60,10 +60,43 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="package-signature">package <span class="element-name">com.clanboards.throttle</span></div>
 <section class="package-description" id="package-description">
-<div class="block">Token-aware rate limiting utilities.
+<div class="block">Rate limiting utilities for managing API request throughput.
 
- <p><a href="RateLimiter.html" title="class in com.clanboards.throttle"><code>RateLimiter</code></a> applies a sliding window
- across all tokens.</div>
+ <p>This package provides thread-safe rate limiting implementations that help
+ respect API rate limits while maximizing throughput. The rate limiter uses
+ a sliding window algorithm to provide fair distribution of requests over time.
+
+ <h2>Core Components</h2>
+ <ul>
+ <li><a href="RateLimiter.html" title="class in com.clanboards.throttle"><code>RateLimiter</code></a> - Sliding window rate limiter</li>
+ </ul>
+
+ <h2>Usage</h2>
+ <p>The rate limiter is automatically configured by <a href="../CocClient.html" title="class in com.clanboards"><code>CocClient</code></a>
+ based on the number of tokens and desired per-token rate. It can also be used
+ independently for other rate limiting scenarios.
+
+ <pre><code>
+ // Create a rate limiter allowing 10 requests per second
+ RateLimiter limiter = new RateLimiter(10, 1000);
+
+ // Acquire permit before making request
+ limiter.acquire();
+ makeApiCall();
+ </code></pre>
+
+ <h2>Thread Safety</h2>
+ <p>All rate limiting implementations are thread-safe and designed for
+ high-concurrency scenarios.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="RateLimiter.html" title="class in com.clanboards.throttle"><code>RateLimiter</code></a></li>
+<li><a href="../CocClient.html" title="class in com.clanboards"><code>CocClient</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -75,7 +108,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><a href="../package-summary.html">com.clanboards</a></div>
 <div class="col-last even-row-color">
-<div class="block">Core public API for the Clash of Clans Java client.</div>
+<div class="block">Core public API for the Clash of Clans Java client library.</div>
 </div>
 </div>
 </div>
@@ -88,7 +121,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="RateLimiter.html" title="class in com.clanboards.throttle">RateLimiter</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Simple sliding-window rate limiter allowing N requests per given time window.</div>
+<div class="block">Thread-safe sliding-window rate limiter for API request throttling.</div>
 </div>
 </div>
 </div>

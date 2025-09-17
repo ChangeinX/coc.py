@@ -77,7 +77,22 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Clan</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Minimal Clan model for initial feature parity with get_clan.</div>
+<div class="block">Represents a Clash of Clans clan with essential information.
+
+ This immutable data class contains core clan properties including identification,
+ descriptive information, and membership details. Additional clan data may be
+ available through the raw JSON attachment when enabled.
+
+ Thread-safety: This class is immutable and thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="CocClient.html#getClan(java.lang.String)"><code>CocClient.getClan(String)</code></a></li>
+<li><a href="CocClient.html#searchClans(java.lang.String,java.lang.Integer)"><code>CocClient.searchClans(String, Integer)</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -107,19 +122,29 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLevel()" class="member-name-link">getLevel</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's experience level.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getMemberCount()" class="member-name-link">getMemberCount</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the current number of members in the clan.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getName()" class="member-name-link">getName</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's display name.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.fasterxml.jackson.databind.JsonNode</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRawJson()" class="member-name-link">getRawJson</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the raw JSON data from the API response.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTag()" class="member-name-link">getTag</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's unique identifier tag.</div>
+</div>
 </div>
 </div>
 </div>
@@ -155,30 +180,77 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getTag()">
 <h3>getTag</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getTag</span>()</div>
+<div class="block">Returns the clan's unique identifier tag.
+
+ Clan tags are unique identifiers in the format "#XXXXXXXX" where X
+ represents alphanumeric characters. Tags are case-insensitive.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan tag (e.g., "#2PP", "#9UL2LJRJ")</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getName()">
 <h3>getName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getName</span>()</div>
+<div class="block">Returns the clan's display name.
+
+ Clan names are player-chosen identifiers that may contain spaces,
+ special characters, and Unicode text. Names are not guaranteed to be unique.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan display name</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getLevel()">
 <h3>getLevel</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getLevel</span>()</div>
+<div class="block">Returns the clan's experience level.
+
+ Clan level increases through member donations and activities.
+ Higher levels unlock perks and bonuses for clan members.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan level (typically 1-20+)</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getMemberCount()">
 <h3>getMemberCount</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getMemberCount</span>()</div>
+<div class="block">Returns the current number of members in the clan.
+
+ Member count reflects active clan participants and is limited
+ by the maximum clan capacity (typically 50 members).</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>current member count (0-50)</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getRawJson()">
 <h3>getRawJson</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.fasterxml.jackson.databind.JsonNode</span>&nbsp;<span class="element-name">getRawJson</span>()</div>
+<div class="block">Returns the raw JSON data from the API response.
+
+ Available only when raw JSON attachment is enabled in CocClient.
+ Contains the complete API response data including fields not
+ mapped to specific properties.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>raw JSON node or null if raw attachment is disabled</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="CocClient.html#isRawAttributeEnabled()"><code>CocClient.isRawAttributeEnabled()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 </ul>

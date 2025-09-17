@@ -77,7 +77,25 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">RateLimiter</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Simple sliding-window rate limiter allowing N requests per given time window.</div>
+<div class="block">Thread-safe sliding-window rate limiter for API request throttling.
+
+ This implementation uses a sliding window algorithm to enforce rate limits,
+ allowing a maximum number of requests within a specified time window.
+ Requests that would exceed the limit are blocked until capacity becomes available.
+
+ The limiter is designed for high-throughput scenarios and provides fair
+ request distribution over time. It's particularly useful for respecting
+ API rate limits while maximizing throughput.
+
+ Thread-safety: This class is thread-safe and designed for concurrent use.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><code>CocClient</code></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,7 +109,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,long)" class="member-name-link">RateLimiter</a><wbr>(int&nbsp;maxRequestsPerWindow,
  long&nbsp;windowMillis)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a rate limiter with the specified capacity and time window.</div>
+</div>
 </div>
 </section>
 </li>
@@ -109,7 +129,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#acquire()" class="member-name-link">acquire</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Blocks until a slot is available, then records this request.</div>
+<div class="block">Acquires a permit to make a request, blocking if necessary.</div>
 </div>
 </div>
 </div>
@@ -133,6 +153,14 @@ loadScripts(document, 'script');</script>
 <h3>RateLimiter</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">RateLimiter</span><wbr><span class="parameters">(int&nbsp;maxRequestsPerWindow,
  long&nbsp;windowMillis)</span></div>
+<div class="block">Creates a rate limiter with the specified capacity and time window.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>maxRequestsPerWindow</code> - maximum number of requests allowed within the time window (must be > 0)</dd>
+<dd><code>windowMillis</code> - time window duration in milliseconds (must be > 0)</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - if either parameter is not positive</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -147,7 +175,18 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="acquire()">
 <h3>acquire</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">acquire</span>()</div>
-<div class="block">Blocks until a slot is available, then records this request.</div>
+<div class="block">Acquires a permit to make a request, blocking if necessary.
+
+ This method blocks the calling thread until a request slot becomes available
+ within the rate limit. Once a slot is acquired, the request is recorded
+ and the method returns immediately.
+
+ The method uses efficient sleeping to avoid busy-waiting while respecting
+ the sliding window constraints.</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if the thread is interrupted while waiting</dd>
+</dl>
 </section>
 </li>
 </ul>

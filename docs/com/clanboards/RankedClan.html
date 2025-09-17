@@ -77,6 +77,23 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">RankedClan</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Represents a clan with ranking information from leaderboards.
+
+ This immutable data class extends basic clan information with competitive
+ ranking data including position, points across different game modes, and
+ historical rank changes. Used in location-based and global rankings.
+
+ Thread-safety: This class is immutable and thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="CocClient.html#getLocationClanRankings(int,java.lang.Integer,java.lang.String,java.lang.String)"><code>CocClient.getLocationClanRankings(int, Integer, String, String)</code></a></li>
+<li><a href="CocClient.html#getLocationBuilderBaseClanRankings(int,java.lang.Integer,java.lang.String,java.lang.String)"><code>CocClient.getLocationBuilderBaseClanRankings(int, Integer, String, String)</code></a></li>
+<li><a href="CocClient.html#getLocationCapitalClanRankings(int,java.lang.Integer,java.lang.String,java.lang.String)"><code>CocClient.getLocationCapitalClanRankings(int, Integer, String, String)</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,34 +123,54 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBuilderBasePoints()" class="member-name-link">getBuilderBasePoints</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's builder base trophy points.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCapitalPoints()" class="member-name-link">getCapitalPoints</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's capital trophy points.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLevel()" class="member-name-link">getLevel</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's experience level.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getMemberCount()" class="member-name-link">getMemberCount</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the current number of members in the clan.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getName()" class="member-name-link">getName</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's display name.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPoints()" class="member-name-link">getPoints</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's main village trophy points.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPreviousRank()" class="member-name-link">getPreviousRank</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's previous ranking position.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRank()" class="member-name-link">getRank</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's current ranking position.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.fasterxml.jackson.databind.JsonNode</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRawJson()" class="member-name-link">getRawJson</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the raw JSON data from the API response.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTag()" class="member-name-link">getTag</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan's unique identifier tag.</div>
+</div>
 </div>
 </div>
 </div>
@@ -169,60 +206,160 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getTag()">
 <h3>getTag</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getTag</span>()</div>
+<div class="block">Returns the clan's unique identifier tag.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan tag (e.g., "#2PP", "#9UL2LJRJ")</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="Clan.html#getTag()"><code>Clan.getTag()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getName()">
 <h3>getName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getName</span>()</div>
+<div class="block">Returns the clan's display name.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan display name</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="Clan.html#getName()"><code>Clan.getName()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getLevel()">
 <h3>getLevel</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getLevel</span>()</div>
+<div class="block">Returns the clan's experience level.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan level (typically 1-20+)</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="Clan.html#getLevel()"><code>Clan.getLevel()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getMemberCount()">
 <h3>getMemberCount</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getMemberCount</span>()</div>
+<div class="block">Returns the current number of members in the clan.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>current member count (0-50)</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="Clan.html#getMemberCount()"><code>Clan.getMemberCount()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getPoints()">
 <h3>getPoints</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></span>&nbsp;<span class="element-name">getPoints</span>()</div>
+<div class="block">Returns the clan's main village trophy points.
+
+ Main village points are the primary ranking metric for clan leaderboards
+ and represent the sum of all members' trophy counts.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan trophy points or null if not applicable for this ranking type</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getBuilderBasePoints()">
 <h3>getBuilderBasePoints</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></span>&nbsp;<span class="element-name">getBuilderBasePoints</span>()</div>
+<div class="block">Returns the clan's builder base trophy points.
+
+ Builder base points represent the sum of all members' builder base
+ trophy counts and are used for builder base clan rankings.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan builder base points or null if not applicable</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getCapitalPoints()">
 <h3>getCapitalPoints</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></span>&nbsp;<span class="element-name">getCapitalPoints</span>()</div>
+<div class="block">Returns the clan's capital trophy points.
+
+ Capital points are earned through clan capital raids and represent
+ the clan's performance in cooperative capital battles.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan capital points or null if not applicable</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getRank()">
 <h3>getRank</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getRank</span>()</div>
+<div class="block">Returns the clan's current ranking position.
+
+ Rank represents the clan's position in the leaderboard where
+ 1 is the highest-ranked clan. Rankings are specific to the
+ location and ranking type (main village, builder base, or capital).</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>current ranking position (1-based)</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getPreviousRank()">
 <h3>getPreviousRank</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getPreviousRank</span>()</div>
+<div class="block">Returns the clan's previous ranking position.
+
+ Shows the clan's rank from the previous ranking period,
+ allowing comparison of rank changes over time.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>previous ranking position (1-based)</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getRawJson()">
 <h3>getRawJson</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.fasterxml.jackson.databind.JsonNode</span>&nbsp;<span class="element-name">getRawJson</span>()</div>
+<div class="block">Returns the raw JSON data from the API response.
+
+ Available only when raw JSON attachment is enabled in CocClient.
+ Contains the complete API response data including fields not
+ mapped to specific properties.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>raw JSON node or null if raw attachment is disabled</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="CocClient.html#isRawAttributeEnabled()"><code>CocClient.isRawAttributeEnabled()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 </ul>

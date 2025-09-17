@@ -77,8 +77,24 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CocClient</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Java client for the Clash of Clans API (initial scaffolding).
- Supports login with email/password (via injected Authenticator) and getClan(tag).</div>
+<div class="block">Primary client for interacting with the Clash of Clans API.
+
+ This client provides comprehensive access to clan data, player information, rankings,
+ war logs, and league data. The client supports token rotation for high-throughput
+ applications and includes built-in rate limiting to respect API constraints.
+
+ Thread-safety: This class is thread-safe after login completion. Multiple threads
+ can safely call API methods concurrently.</div>
+<dl class="notes">
+<dt>Since:</dt>
+<dd>0.1.0</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="https://developer.clashofclans.com/">Clash of Clans API Documentation</a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -92,20 +108,28 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.clanboards.http.HttpTransport,com.clanboards.auth.Authenticator)" class="member-name-link">CocClient</a><wbr>(<a href="http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport,
  <a href="auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a>&nbsp;authenticator)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a client with default API base URL and raw JSON disabled.</div>
+</div>
 <div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(com.clanboards.http.HttpTransport,com.clanboards.auth.Authenticator,boolean)" class="member-name-link">CocClient</a><wbr>(<a href="http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport,
  <a href="auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a>&nbsp;authenticator,
  boolean&nbsp;rawAttribute)</code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Creates a client with default API base URL and configurable raw JSON support.</div>
+</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.clanboards.http.HttpTransport,com.clanboards.auth.Authenticator,java.lang.String)" class="member-name-link">CocClient</a><wbr>(<a href="http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport,
  <a href="auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a>&nbsp;authenticator,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;baseUrl)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a client with custom API base URL and raw JSON disabled.</div>
+</div>
 <div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(com.clanboards.http.HttpTransport,com.clanboards.auth.Authenticator,java.lang.String,boolean)" class="member-name-link">CocClient</a><wbr>(<a href="http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport,
  <a href="auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a>&nbsp;authenticator,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;baseUrl,
  boolean&nbsp;rawAttribute)</code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Primary constructor with full configuration options.</div>
+</div>
 </div>
 </section>
 </li>
@@ -122,122 +146,170 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="League.html" title="class in com.clanboards">League</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBuilderBaseLeague(int)" class="member-name-link">getBuilderBaseLeague</a><wbr>(int&nbsp;id)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves information about a specific builder base league.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="League.html" title="class in com.clanboards">League</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBuilderBaseLeagues(java.lang.Integer)" class="member-name-link">getBuilderBaseLeagues</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves all available builder base leagues.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="League.html" title="class in com.clanboards">League</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCapitalLeague(int)" class="member-name-link">getCapitalLeague</a><wbr>(int&nbsp;id)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves information about a specific clan capital league.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="League.html" title="class in com.clanboards">League</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCapitalLeagues(java.lang.Integer)" class="member-name-link">getCapitalLeagues</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves all available clan capital leagues.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Clan.html" title="class in com.clanboards">Clan</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getClan(java.lang.String)" class="member-name-link">getClan</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get information about a single clan by tag.</div>
+<div class="block">Retrieves comprehensive information about a clan by its tag.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Label.html" title="class in com.clanboards">Label</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getClanLabels()" class="member-name-link">getClanLabels</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves all available clan labels from the API.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getClanWarLeagueGroup(java.lang.String)" class="member-name-link">getClanWarLeagueGroup</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;clanTag)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves clan war league group information for a clan.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="GoldPassSeason.html" title="class in com.clanboards">GoldPassSeason</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCurrentGoldPassSeason()" class="member-name-link">getCurrentGoldPassSeason</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves information about the current Gold Pass season.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCurrentWar(java.lang.String)" class="member-name-link">getCurrentWar</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;clanTag)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves information about a clan's current war.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCwlWar(java.lang.String)" class="member-name-link">getCwlWar</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;warTag)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves detailed information about a specific clan war league war.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="League.html" title="class in com.clanboards">League</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLeague(int)" class="member-name-link">getLeague</a><wbr>(int&nbsp;leagueId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves information about a specific league by its ID.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLeagueSeasonInfo(int,java.lang.String,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLeagueSeasonInfo</a><wbr>(int&nbsp;leagueId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;seasonId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves player rankings for a specific league season.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="SeasonRef.html" title="class in com.clanboards">SeasonRef</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLeagueSeasons(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLeagueSeasons</a><wbr>(int&nbsp;leagueId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves available seasons for a specific league.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Location.html" title="class in com.clanboards">Location</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLocation(int)" class="member-name-link">getLocation</a><wbr>(int&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves information about a specific location by its ID.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="RankedClan.html" title="class in com.clanboards">RankedClan</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLocationBuilderBaseClanRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationBuilderBaseClanRankings</a><wbr>(int&nbsp;locationId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves builder base clan rankings for a specific location.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLocationBuilderBasePlayerRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationBuilderBasePlayerRankings</a><wbr>(int&nbsp;locationId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves builder base player rankings for a specific location.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="RankedClan.html" title="class in com.clanboards">RankedClan</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLocationCapitalClanRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationCapitalClanRankings</a><wbr>(int&nbsp;locationId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves clan capital rankings for a specific location.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="RankedClan.html" title="class in com.clanboards">RankedClan</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLocationClanRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationClanRankings</a><wbr>(int&nbsp;locationId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves clan rankings for a specific location (main village).</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLocationPlayerRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationPlayerRankings</a><wbr>(int&nbsp;locationId,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves player rankings for a specific location (main village).</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ClanMember.html" title="class in com.clanboards">ClanMember</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getMembers(java.lang.String,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getMembers</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;clanTag,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">List clan members.</div>
+<div class="block">Retrieves the member list for a specified clan.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Player.html" title="class in com.clanboards">Player</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPlayer(java.lang.String)" class="member-name-link">getPlayer</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves comprehensive information about a player by their tag.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Label.html" title="class in com.clanboards">Label</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPlayerLabels()" class="member-name-link">getPlayerLabels</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves all available player labels from the API.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getToken()" class="member-name-link">getToken</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Expose first token (read-only) for diagnostics.</div>
+<div class="block">Returns the first available API token for diagnostic purposes.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="League.html" title="class in com.clanboards">League</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWarLeague(int)" class="member-name-link">getWarLeague</a><wbr>(int&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves information about a specific clan war league.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="League.html" title="class in com.clanboards">League</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWarLeagues(java.lang.Integer)" class="member-name-link">getWarLeagues</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves all available clan war leagues.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="wars/ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWarLog(java.lang.String,java.lang.Integer)" class="member-name-link">getWarLog</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;clanTag,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves the war log for a specified clan.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isRawAttributeEnabled()" class="member-name-link">isRawAttributeEnabled</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns whether raw JSON attachment is enabled for response objects.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#login(java.lang.String,java.lang.String)" class="member-name-link">login</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Obtain one token with default throttling (10 req/sec per token).</div>
+<div class="block">Authenticates with a single API token using default rate limiting.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#login(java.lang.String,java.lang.String,int,int)" class="member-name-link">login</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email,
@@ -245,30 +317,36 @@ loadScripts(document, 'script');</script>
  int&nbsp;tokenCount,
  int&nbsp;perTokenRate)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Obtain multiple tokens and configure throttling (per-token requests per second).</div>
+<div class="block">Authenticates with multiple API tokens and configures rate limiting.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#loginWithTokens(java.util.List,int)" class="member-name-link">loginWithTokens</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;tokens,
  int&nbsp;perTokenRate)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Use provided tokens and configure throttling.</div>
+<div class="block">Configures the client with pre-obtained API tokens.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Clan.html" title="class in com.clanboards">Clan</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#searchClans(java.lang.String,java.lang.Integer)" class="member-name-link">searchClans</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Search clans by name (and optional limit).</div>
+<div class="block">Searches for clans matching the specified criteria.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="League.html" title="class in com.clanboards">League</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#searchLeagues(java.lang.Integer)" class="member-name-link">searchLeagues</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves all available leagues for the main village.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Location.html" title="class in com.clanboards">Location</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#searchLocations(java.lang.Integer)" class="member-name-link">searchLocations</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves all available locations (countries and global) from the API.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#verifyPlayerToken(java.lang.String,java.lang.String)" class="member-name-link">verifyPlayerToken</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tokenToVerify)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Verifies a player's API token for authentication purposes.</div>
+</div>
 </div>
 </div>
 </div>
@@ -291,6 +369,14 @@ loadScripts(document, 'script');</script>
 <h3>CocClient</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CocClient</span><wbr><span class="parameters">(<a href="http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport,
  <a href="auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a>&nbsp;authenticator)</span></div>
+<div class="block">Creates a client with default API base URL and raw JSON disabled.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>transport</code> - HTTP transport implementation for making requests</dd>
+<dd><code>authenticator</code> - authentication strategy for obtaining API tokens</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - if transport or authenticator is null</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -299,6 +385,15 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CocClient</span><wbr><span class="parameters">(<a href="http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport,
  <a href="auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a>&nbsp;authenticator,
  boolean&nbsp;rawAttribute)</span></div>
+<div class="block">Creates a client with default API base URL and configurable raw JSON support.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>transport</code> - HTTP transport implementation for making requests</dd>
+<dd><code>authenticator</code> - authentication strategy for obtaining API tokens</dd>
+<dd><code>rawAttribute</code> - whether to attach raw JSON data to response objects</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - if transport or authenticator is null</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -307,6 +402,15 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CocClient</span><wbr><span class="parameters">(<a href="http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport,
  <a href="auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a>&nbsp;authenticator,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;baseUrl)</span></div>
+<div class="block">Creates a client with custom API base URL and raw JSON disabled.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>transport</code> - HTTP transport implementation for making requests</dd>
+<dd><code>authenticator</code> - authentication strategy for obtaining API tokens</dd>
+<dd><code>baseUrl</code> - custom base URL for API requests (useful for testing)</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - if any parameter is null</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -316,6 +420,16 @@ loadScripts(document, 'script');</script>
  <a href="auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a>&nbsp;authenticator,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;baseUrl,
  boolean&nbsp;rawAttribute)</span></div>
+<div class="block">Primary constructor with full configuration options.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>transport</code> - HTTP transport implementation for making requests</dd>
+<dd><code>authenticator</code> - authentication strategy for obtaining API tokens</dd>
+<dd><code>baseUrl</code> - base URL for API requests</dd>
+<dd><code>rawAttribute</code> - whether to attach raw JSON data to response objects</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - if transport, authenticator, or baseUrl is null</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -330,6 +444,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isRawAttributeEnabled()">
 <h3>isRawAttributeEnabled</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isRawAttributeEnabled</span>()</div>
+<div class="block">Returns whether raw JSON attachment is enabled for response objects.
+
+ When enabled, response objects will include the original JSON data
+ for debugging or extended processing purposes.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if raw JSON is attached to response objects</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -337,7 +459,18 @@ loadScripts(document, 'script');</script>
 <h3>login</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">login</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</span></div>
-<div class="block">Obtain one token with default throttling (10 req/sec per token).</div>
+<div class="block">Authenticates with a single API token using default rate limiting.
+
+ Uses the configured authenticator to obtain one token and sets up
+ rate limiting at 10 requests per second.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>email</code> - developer account email</dd>
+<dd><code>password</code> - developer account password</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if authentication fails</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if authenticator encounters an error</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -347,7 +480,21 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password,
  int&nbsp;tokenCount,
  int&nbsp;perTokenRate)</span></div>
-<div class="block">Obtain multiple tokens and configure throttling (per-token requests per second).</div>
+<div class="block">Authenticates with multiple API tokens and configures rate limiting.
+
+ Uses the configured authenticator to obtain the specified number of tokens
+ and sets up rate limiting based on per-token request rates. Total rate limit
+ is calculated as tokenCount * perTokenRate.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>email</code> - developer account email</dd>
+<dd><code>password</code> - developer account password</dd>
+<dd><code>tokenCount</code> - number of tokens to obtain (must be > 0)</dd>
+<dd><code>perTokenRate</code> - requests per second per token (must be > 0)</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if authentication fails or no tokens obtained</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if authenticator encounters an error</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -355,14 +502,37 @@ loadScripts(document, 'script');</script>
 <h3>loginWithTokens</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loginWithTokens</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;tokens,
  int&nbsp;perTokenRate)</span></div>
-<div class="block">Use provided tokens and configure throttling.</div>
+<div class="block">Configures the client with pre-obtained API tokens.
+
+ Bypasses the authentication process by using provided tokens directly.
+ Useful when tokens are obtained through external means or cached.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>tokens</code> - list of valid API tokens (must not be null or empty)</dd>
+<dd><code>perTokenRate</code> - requests per second per token (must be > 0)</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - if tokens is null or empty</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getClan(java.lang.String)">
 <h3>getClan</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Clan.html" title="class in com.clanboards">Clan</a></span>&nbsp;<span class="element-name">getClan</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag)</span></div>
-<div class="block">Get information about a single clan by tag.</div>
+<div class="block">Retrieves comprehensive information about a clan by its tag.
+
+ The tag is automatically corrected to standard format (uppercase,
+ O->0 conversion, special character removal, # prefix addition).</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>tag</code> - clan tag (e.g., "#2PP", "2pp", "2PP")</dd>
+<dt>Returns:</dt>
+<dd>clan information including name, level, member count</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if clan with the specified tag does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -370,7 +540,21 @@ loadScripts(document, 'script');</script>
 <h3>searchClans</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Clan.html" title="class in com.clanboards">Clan</a>&gt;</span>&nbsp;<span class="element-name">searchClans</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</span></div>
-<div class="block">Search clans by name (and optional limit). At least one filter must be provided.</div>
+<div class="block">Searches for clans matching the specified criteria.
+
+ At least one filter parameter must be provided. The search is performed
+ against the clan name field and supports partial matching.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>name</code> - clan name to search for (partial matches supported)</dd>
+<dd><code>limit</code> - maximum number of results to return (null for API default)</dd>
+<dt>Returns:</dt>
+<dd>list of clans matching the search criteria</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - if no valid filter criteria provided</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -380,13 +564,44 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</span></div>
-<div class="block">List clan members. Optional: limit, after, before.</div>
+<div class="block">Retrieves the member list for a specified clan.
+
+ Supports pagination through before/after cursors for large clans.
+ The clan tag is automatically corrected to standard format.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>clanTag</code> - clan tag to get members for</dd>
+<dd><code>limit</code> - maximum number of members to return (null for API default)</dd>
+<dd><code>after</code> - cursor for pagination (members after this cursor)</dd>
+<dd><code>before</code> - cursor for pagination (members before this cursor)</dd>
+<dt>Returns:</dt>
+<dd>list of clan members with basic profile information</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if clan with the specified tag does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getPlayer(java.lang.String)">
 <h3>getPlayer</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Player.html" title="class in com.clanboards">Player</a></span>&nbsp;<span class="element-name">getPlayer</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag)</span></div>
+<div class="block">Retrieves comprehensive information about a player by their tag.
+
+ The player tag is automatically corrected to standard format.
+ Returns detailed player statistics including town hall level, trophies,
+ and other game progression data.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>tag</code> - player tag (e.g., "#2PP", "2pp", "2PP")</dd>
+<dt>Returns:</dt>
+<dd>player information and statistics</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if player with the specified tag does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -394,30 +609,91 @@ loadScripts(document, 'script');</script>
 <h3>verifyPlayerToken</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">verifyPlayerToken</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tokenToVerify)</span></div>
+<div class="block">Verifies a player's API token for authentication purposes.
+
+ This endpoint allows verification of player-generated tokens
+ for secure API access and player identity confirmation.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>tag</code> - player tag to verify token for</dd>
+<dd><code>tokenToVerify</code> - the token provided by the player to verify</dd>
+<dt>Returns:</dt>
+<dd>true if the token is valid for the specified player</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if player with the specified tag does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getClanLabels()">
 <h3>getClanLabels</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Label.html" title="class in com.clanboards">Label</a>&gt;</span>&nbsp;<span class="element-name">getClanLabels</span>()</div>
+<div class="block">Retrieves all available clan labels from the API.
+
+ Labels are used to categorize and filter clans based on various criteria
+ such as clan type, requirements, or focus areas.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>list of all available clan labels</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getPlayerLabels()">
 <h3>getPlayerLabels</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Label.html" title="class in com.clanboards">Label</a>&gt;</span>&nbsp;<span class="element-name">getPlayerLabels</span>()</div>
+<div class="block">Retrieves all available player labels from the API.
+
+ Labels help categorize players and can be used for filtering
+ or organizational purposes.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>list of all available player labels</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="searchLocations(java.lang.Integer)">
 <h3>searchLocations</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Location.html" title="class in com.clanboards">Location</a>&gt;</span>&nbsp;<span class="element-name">searchLocations</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</span></div>
+<div class="block">Retrieves all available locations (countries and global) from the API.
+
+ Locations are used for regional rankings and leaderboards.
+ Includes both country-specific locations and the global location.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>limit</code> - maximum number of locations to return (null for no limit)</dd>
+<dt>Returns:</dt>
+<dd>list of available locations with country codes and names</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getLocation(int)">
 <h3>getLocation</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Location.html" title="class in com.clanboards">Location</a></span>&nbsp;<span class="element-name">getLocation</span><wbr><span class="parameters">(int&nbsp;id)</span></div>
+<div class="block">Retrieves information about a specific location by its ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - location identifier</dd>
+<dt>Returns:</dt>
+<dd>location details including name and country information</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if location with the specified ID does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -427,6 +703,23 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</span></div>
+<div class="block">Retrieves clan rankings for a specific location (main village).
+
+ Returns clans ranked by their main village trophy count within
+ the specified geographical location. Supports pagination.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>locationId</code> - location identifier for rankings</dd>
+<dd><code>limit</code> - maximum number of ranked clans to return</dd>
+<dd><code>after</code> - pagination cursor for results after this position</dd>
+<dd><code>before</code> - pagination cursor for results before this position</dd>
+<dt>Returns:</dt>
+<dd>list of ranked clans with position and points information</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if location does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -436,6 +729,23 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</span></div>
+<div class="block">Retrieves builder base clan rankings for a specific location.
+
+ Returns clans ranked by their builder base trophy count within
+ the specified geographical location. Supports pagination.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>locationId</code> - location identifier for rankings</dd>
+<dd><code>limit</code> - maximum number of ranked clans to return</dd>
+<dd><code>after</code> - pagination cursor for results after this position</dd>
+<dd><code>before</code> - pagination cursor for results before this position</dd>
+<dt>Returns:</dt>
+<dd>list of ranked clans with builder base rankings</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if location does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -445,6 +755,23 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</span></div>
+<div class="block">Retrieves clan capital rankings for a specific location.
+
+ Returns clans ranked by their clan capital trophy count within
+ the specified geographical location. Supports pagination.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>locationId</code> - location identifier for rankings</dd>
+<dd><code>limit</code> - maximum number of ranked clans to return</dd>
+<dd><code>after</code> - pagination cursor for results after this position</dd>
+<dd><code>before</code> - pagination cursor for results before this position</dd>
+<dt>Returns:</dt>
+<dd>list of ranked clans with clan capital rankings</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if location does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -454,6 +781,23 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</span></div>
+<div class="block">Retrieves player rankings for a specific location (main village).
+
+ Returns players ranked by their main village trophy count within
+ the specified geographical location. Supports pagination.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>locationId</code> - location identifier for rankings</dd>
+<dd><code>limit</code> - maximum number of ranked players to return</dd>
+<dd><code>after</code> - pagination cursor for results after this position</dd>
+<dd><code>before</code> - pagination cursor for results before this position</dd>
+<dt>Returns:</dt>
+<dd>list of ranked players with position and trophy information</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if location does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -463,54 +807,167 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</span></div>
+<div class="block">Retrieves builder base player rankings for a specific location.
+
+ Returns players ranked by their builder base trophy count within
+ the specified geographical location. Supports pagination.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>locationId</code> - location identifier for rankings</dd>
+<dd><code>limit</code> - maximum number of ranked players to return</dd>
+<dd><code>after</code> - pagination cursor for results after this position</dd>
+<dd><code>before</code> - pagination cursor for results before this position</dd>
+<dt>Returns:</dt>
+<dd>list of ranked players with builder base rankings</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if location does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="searchLeagues(java.lang.Integer)">
 <h3>searchLeagues</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="League.html" title="class in com.clanboards">League</a>&gt;</span>&nbsp;<span class="element-name">searchLeagues</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</span></div>
+<div class="block">Retrieves all available leagues for the main village.
+
+ Returns league information including names and trophy requirements
+ for progression through the competitive ladder system.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>limit</code> - maximum number of leagues to return (null for no limit)</dd>
+<dt>Returns:</dt>
+<dd>list of available leagues with progression requirements</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getLeague(int)">
 <h3>getLeague</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="League.html" title="class in com.clanboards">League</a></span>&nbsp;<span class="element-name">getLeague</span><wbr><span class="parameters">(int&nbsp;leagueId)</span></div>
+<div class="block">Retrieves information about a specific league by its ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>leagueId</code> - league identifier</dd>
+<dt>Returns:</dt>
+<dd>league details including name and trophy requirements</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if league with the specified ID does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getCapitalLeagues(java.lang.Integer)">
 <h3>getCapitalLeagues</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="League.html" title="class in com.clanboards">League</a>&gt;</span>&nbsp;<span class="element-name">getCapitalLeagues</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</span></div>
+<div class="block">Retrieves all available clan capital leagues.
+
+ Returns league information for the clan capital competitive system
+ including names and trophy requirements for progression.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>limit</code> - maximum number of leagues to return (null for no limit)</dd>
+<dt>Returns:</dt>
+<dd>list of available capital leagues</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getCapitalLeague(int)">
 <h3>getCapitalLeague</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="League.html" title="class in com.clanboards">League</a></span>&nbsp;<span class="element-name">getCapitalLeague</span><wbr><span class="parameters">(int&nbsp;id)</span></div>
+<div class="block">Retrieves information about a specific clan capital league.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - capital league identifier</dd>
+<dt>Returns:</dt>
+<dd>capital league details including requirements</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if capital league does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getWarLeagues(java.lang.Integer)">
 <h3>getWarLeagues</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="League.html" title="class in com.clanboards">League</a>&gt;</span>&nbsp;<span class="element-name">getWarLeagues</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</span></div>
+<div class="block">Retrieves all available clan war leagues.
+
+ Returns league information for the clan war league competitive system
+ where clans compete in structured seasonal tournaments.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>limit</code> - maximum number of leagues to return (null for no limit)</dd>
+<dt>Returns:</dt>
+<dd>list of available war leagues</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getWarLeague(int)">
 <h3>getWarLeague</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="League.html" title="class in com.clanboards">League</a></span>&nbsp;<span class="element-name">getWarLeague</span><wbr><span class="parameters">(int&nbsp;id)</span></div>
+<div class="block">Retrieves information about a specific clan war league.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - war league identifier</dd>
+<dt>Returns:</dt>
+<dd>war league details and requirements</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if war league does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getBuilderBaseLeagues(java.lang.Integer)">
 <h3>getBuilderBaseLeagues</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="League.html" title="class in com.clanboards">League</a>&gt;</span>&nbsp;<span class="element-name">getBuilderBaseLeagues</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</span></div>
+<div class="block">Retrieves all available builder base leagues.
+
+ Returns league information for the builder base competitive system
+ including trophy requirements and progression structure.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>limit</code> - maximum number of leagues to return (null for no limit)</dd>
+<dt>Returns:</dt>
+<dd>list of available builder base leagues</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getBuilderBaseLeague(int)">
 <h3>getBuilderBaseLeague</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="League.html" title="class in com.clanboards">League</a></span>&nbsp;<span class="element-name">getBuilderBaseLeague</span><wbr><span class="parameters">(int&nbsp;id)</span></div>
+<div class="block">Retrieves information about a specific builder base league.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - builder base league identifier</dd>
+<dt>Returns:</dt>
+<dd>builder base league details and requirements</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if builder base league does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -520,6 +977,22 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</span></div>
+<div class="block">Retrieves available seasons for a specific league.
+
+ Returns season identifiers that can be used to query historical
+ ranking data for the specified league. Supports pagination.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>leagueId</code> - league identifier to get seasons for</dd>
+<dd><code>limit</code> - maximum number of seasons to return</dd>
+<dd><code>after</code> - pagination cursor for results after this position</dd>
+<dd><code>before</code> - pagination cursor for results before this position</dd>
+<dt>Returns:</dt>
+<dd>list of season references with identifiers</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -530,12 +1003,40 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;after,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;before)</span></div>
+<div class="block">Retrieves player rankings for a specific league season.
+
+ Returns historical ranking data showing player positions and trophy
+ counts for the specified league and season combination.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>leagueId</code> - league identifier</dd>
+<dd><code>seasonId</code> - season identifier (obtained from getLeagueSeasons)</dd>
+<dd><code>limit</code> - maximum number of ranked players to return</dd>
+<dd><code>after</code> - pagination cursor for results after this position</dd>
+<dd><code>before</code> - pagination cursor for results before this position</dd>
+<dt>Returns:</dt>
+<dd>list of ranked players for the specified season</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getCurrentGoldPassSeason()">
 <h3>getCurrentGoldPassSeason</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="GoldPassSeason.html" title="class in com.clanboards">GoldPassSeason</a></span>&nbsp;<span class="element-name">getCurrentGoldPassSeason</span>()</div>
+<div class="block">Retrieves information about the current Gold Pass season.
+
+ Returns details about the active Gold Pass including start/end dates,
+ available rewards, and seasonal challenges.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>current Gold Pass season information</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -543,31 +1044,99 @@ loadScripts(document, 'script');</script>
 <h3>getWarLog</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="wars/ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a>&gt;</span>&nbsp;<span class="element-name">getWarLog</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;clanTag,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;limit)</span></div>
+<div class="block">Retrieves the war log for a specified clan.
+
+ Returns historical war data including results, opponents, and statistics.
+ The clan's war log must be public for this endpoint to succeed.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>clanTag</code> - clan tag to get war log for</dd>
+<dd><code>limit</code> - maximum number of war log entries to return</dd>
+<dt>Returns:</dt>
+<dd>list of war log entries with results and opponent information</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/PrivateWarLogException.html" title="class in com.clanboards.exceptions">PrivateWarLogException</a></code> - if the clan's war log is private</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if clan with the specified tag does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getCurrentWar(java.lang.String)">
 <h3>getCurrentWar</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></span>&nbsp;<span class="element-name">getCurrentWar</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;clanTag)</span></div>
+<div class="block">Retrieves information about a clan's current war.
+
+ Returns detailed information about the ongoing war including state,
+ team sizes, attack counts, and participating members.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>clanTag</code> - clan tag to get current war for</dd>
+<dt>Returns:</dt>
+<dd>current war information with both clan and opponent details</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/PrivateWarLogException.html" title="class in com.clanboards.exceptions">PrivateWarLogException</a></code> - if the clan's war information is private</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if clan does not exist or has no current war</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getClanWarLeagueGroup(java.lang.String)">
 <h3>getClanWarLeagueGroup</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></span>&nbsp;<span class="element-name">getClanWarLeagueGroup</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;clanTag)</span></div>
+<div class="block">Retrieves clan war league group information for a clan.
+
+ Returns the current CWL group including participating clans, round structure,
+ and war tags for accessing individual league wars.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>clanTag</code> - clan tag to get CWL group information for</dd>
+<dt>Returns:</dt>
+<dd>CWL group with participating clans and round information</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/PrivateWarLogException.html" title="class in com.clanboards.exceptions">PrivateWarLogException</a></code> - if the clan's war league data is private</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if clan does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getCwlWar(java.lang.String)">
 <h3>getCwlWar</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></span>&nbsp;<span class="element-name">getCwlWar</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;warTag)</span></div>
+<div class="block">Retrieves detailed information about a specific clan war league war.
+
+ Uses a war tag obtained from the CWL group to fetch detailed war data
+ including attack results, member participation, and final scores.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>warTag</code> - war tag identifier from CWL group rounds</dd>
+<dt>Returns:</dt>
+<dd>detailed CWL war information with attack data</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if client is not logged in</dd>
+<dd><code><a href="exceptions/PrivateWarLogException.html" title="class in com.clanboards.exceptions">PrivateWarLogException</a></code> - if the war data is private or forbidden</dd>
+<dd><code><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></code> - if war with the specified tag does not exist</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if API request fails or response parsing fails</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getToken()">
 <h3>getToken</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getToken</span>()</div>
-<div class="block">Expose first token (read-only) for diagnostics.</div>
+<div class="block">Returns the first available API token for diagnostic purposes.
+
+ This method is primarily intended for debugging and monitoring.
+ Returns null if the client is not logged in or no tokens are available.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>first API token or null if not logged in</dd>
+</dl>
 </section>
 </li>
 </ul>

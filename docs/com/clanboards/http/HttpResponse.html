@@ -77,7 +77,22 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">HttpResponse</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Simple HTTP response model.</div>
+<div class="block">Immutable HTTP response model containing status code and response body.
+
+ This class represents the result of an HTTP request execution, providing
+ access to the response status code and body data. Instances are created
+ by HttpTransport implementations and consumed by CocClient.
+
+ Thread-safety: This class is immutable and thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="HttpTransport.html#execute(com.clanboards.http.HttpRequest)"><code>HttpTransport.execute(HttpRequest)</code></a></li>
+<li><a href="HttpRequest.html" title="class in com.clanboards.http"><code>HttpRequest</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,7 +106,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,byte%5B%5D)" class="member-name-link">HttpResponse</a><wbr>(int&nbsp;statusCode,
  byte[]&nbsp;body)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates an HTTP response with the specified status code and body.</div>
+</div>
 </div>
 </section>
 </li>
@@ -108,10 +125,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>byte[]</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBody()" class="member-name-link">getBody</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the response body as a byte array.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStatusCode()" class="member-name-link">getStatusCode</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the HTTP status code for this response.</div>
+</div>
 </div>
 </div>
 </div>
@@ -134,6 +155,12 @@ loadScripts(document, 'script');</script>
 <h3>HttpResponse</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">HttpResponse</span><wbr><span class="parameters">(int&nbsp;statusCode,
  byte[]&nbsp;body)</span></div>
+<div class="block">Creates an HTTP response with the specified status code and body.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>statusCode</code> - HTTP status code (e.g., 200, 404, 500)</dd>
+<dd><code>body</code> - response body bytes (null will be stored as provided)</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -148,12 +175,31 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getStatusCode()">
 <h3>getStatusCode</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getStatusCode</span>()</div>
+<div class="block">Returns the HTTP status code for this response.
+
+ Status codes follow standard HTTP conventions:
+ - 2xx: Success
+ - 4xx: Client errors (bad request, not found, etc.)
+ - 5xx: Server errors</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>HTTP status code</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getBody()">
 <h3>getBody</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name">getBody</span>()</div>
+<div class="block">Returns the response body as a byte array.
+
+ The body contains the raw response data from the server,
+ typically JSON for API responses. May be null or empty
+ for certain response types.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>response body bytes (may be null)</dd>
+</dl>
 </section>
 </li>
 </ul>

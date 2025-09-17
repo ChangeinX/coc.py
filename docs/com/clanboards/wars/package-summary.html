@@ -60,11 +60,39 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="package-signature">package <span class="element-name">com.clanboards.wars</span></div>
 <section class="package-description" id="package-description">
-<div class="block">Models and helpers for clan wars and league play.
+<div class="block">Data models for clan wars, war logs, and Clan War League functionality.
 
- <p>Includes <a href="ClanWar.html" title="class in com.clanboards.wars"><code>ClanWar</code></a>,
- <a href="ClanWarLogEntry.html" title="class in com.clanboards.wars"><code>ClanWarLogEntry</code></a>, and
- <a href="ClanWarLeagueGroup.html" title="class in com.clanboards.wars"><code>ClanWarLeagueGroup</code></a>.</div>
+ <p>This package contains immutable data models representing various aspects
+ of clan warfare in Clash of Clans, including regular clan wars, war logs,
+ and the Clan War League (CWL) competitive system.
+
+ <h2>War Types</h2>
+ <ul>
+ <li><strong>Regular Wars</strong> - Standard clan vs clan battles</li>
+ <li><strong>Clan War League</strong> - Seasonal tournament-style competition</li>
+ </ul>
+
+ <h2>Core Models</h2>
+ <ul>
+ <li><a href="ClanWar.html" title="class in com.clanboards.wars"><code>ClanWar</code></a> - Active or completed war information</li>
+ <li><a href="WarSide.html" title="class in com.clanboards.wars"><code>WarSide</code></a> - One side's performance in a war</li>
+ <li><a href="ClanWarLogEntry.html" title="class in com.clanboards.wars"><code>ClanWarLogEntry</code></a> - Historical war record</li>
+ <li><a href="ClanWarLeagueGroup.html" title="class in com.clanboards.wars"><code>ClanWarLeagueGroup</code></a> - CWL group structure and rounds</li>
+ <li><a href="CwlClan.html" title="class in com.clanboards.wars"><code>CwlClan</code></a> - Clan information within CWL context</li>
+ </ul>
+
+ <h2>Thread Safety</h2>
+ <p>All data models in this package are immutable and thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="../CocClient.html#getCurrentWar(java.lang.String)"><code>CocClient.getCurrentWar(String)</code></a></li>
+<li><a href="../CocClient.html#getWarLog(java.lang.String,java.lang.Integer)"><code>CocClient.getWarLog(String, Integer)</code></a></li>
+<li><a href="../CocClient.html#getClanWarLeagueGroup(java.lang.String)"><code>CocClient.getClanWarLeagueGroup(String)</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -76,7 +104,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><a href="../package-summary.html">com.clanboards</a></div>
 <div class="col-last even-row-color">
-<div class="block">Core public API for the Clash of Clans Java client.</div>
+<div class="block">Core public API for the Clash of Clans Java client library.</div>
 </div>
 </div>
 </div>
@@ -88,15 +116,21 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Represents a clan war with state information and participating sides.</div>
+</div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block">Represents a Clan War League group with participating clans and round structure.</div>
+</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="CwlClan.html" title="class in com.clanboards.wars">CwlClan</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">&nbsp;</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="WarSide.html" title="class in com.clanboards.wars">WarSide</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Represents one side (clan or opponent) in a clan war.</div>
+</div>
 </div>
 </div>
 </li>

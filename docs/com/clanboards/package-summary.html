@@ -60,19 +60,57 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="package-signature">package <span class="element-name">com.clanboards</span></div>
 <section class="package-description" id="package-description">
-<div class="block">Core public API for the Clash of Clans Java client.
+<div class="block">Core public API for the Clash of Clans Java client library.
 
- <p>Key types:
- - <a href="CocClient.html" title="class in com.clanboards"><code>CocClient</code></a> – main entry point for endpoints
- - Data models like <a href="Clan.html" title="class in com.clanboards"><code>Clan</code></a>, <a href="Player.html" title="class in com.clanboards"><code>Player</code></a>
- - Exceptions: <a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions"><code>NotFoundException</code></a>,
-   <a href="exceptions/PrivateWarLogException.html" title="class in com.clanboards.exceptions"><code>PrivateWarLogException</code></a>
+ <p>This package provides a comprehensive Java client for interacting with the
+ official Clash of Clans API. The library is designed for production use with
+ features including automatic token rotation, rate limiting, and robust error handling.
 
- <p>Design highlights:
- - Pluggable HTTP via <a href="http/HttpTransport.html" title="interface in com.clanboards.http"><code>HttpTransport</code></a>
- - Token rotation (<a href="token/TokenRotator.html" title="class in com.clanboards.token"><code>TokenRotator</code></a>) and rate limiting
-   (<a href="throttle/RateLimiter.html" title="class in com.clanboards.throttle"><code>RateLimiter</code></a>)
- - Tag normalization utilities in <a href="util/TagUtil.html" title="class in com.clanboards.util"><code>TagUtil</code></a></div>
+ <h2>Quick Start</h2>
+ <pre><code>
+ // Create client with HTTP transport and authenticator
+ HttpTransport transport = new DefaultHttpTransport();
+ Authenticator auth = new DevSiteAuthenticator(transport);
+ CocClient client = new CocClient(transport, auth);
+
+ // Login with developer credentials
+ client.login("email@example.com", "password");
+
+ // Fetch clan information
+ Clan clan = client.getClan("#2PP");
+ System.out.println(clan.getName());
+ </code></pre>
+
+ <h2>Key Components</h2>
+ <ul>
+ <li><a href="CocClient.html" title="class in com.clanboards"><code>CocClient</code></a> - Main API client and entry point</li>
+ <li><a href="Clan.html" title="class in com.clanboards"><code>Clan</code></a>, <a href="Player.html" title="class in com.clanboards"><code>Player</code></a> - Core data models</li>
+ <li><a href="http/HttpTransport.html" title="interface in com.clanboards.http"><code>HttpTransport</code></a> - Pluggable HTTP layer</li>
+ <li><a href="auth/Authenticator.html" title="interface in com.clanboards.auth"><code>Authenticator</code></a> - Token acquisition strategy</li>
+ <li><a href="util/TagUtil.html" title="class in com.clanboards.util"><code>TagUtil</code></a> - Tag normalization utilities</li>
+ </ul>
+
+ <h2>Error Handling</h2>
+ <p>The library uses specific exceptions for common API scenarios:
+ <ul>
+ <li><a href="exceptions/NotFoundException.html" title="class in com.clanboards.exceptions"><code>NotFoundException</code></a> - Resource not found (HTTP 404)</li>
+ <li><a href="exceptions/PrivateWarLogException.html" title="class in com.clanboards.exceptions"><code>PrivateWarLogException</code></a> - Private war data (HTTP 403)</li>
+ </ul>
+
+ <h2>Thread Safety</h2>
+ <p>The client and all data model classes are thread-safe and designed for
+ concurrent use in multi-threaded applications.</div>
+<dl class="notes">
+<dt>Since:</dt>
+<dd>0.1.0</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="CocClient.html" title="class in com.clanboards"><code>CocClient</code></a></li>
+<li><a href="https://developer.clashofclans.com/">Clash of Clans API Documentation</a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -84,8 +122,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><a href="auth/package-summary.html">com.clanboards.auth</a></div>
 <div class="col-last even-row-color">
-<div class="block">Authentication helpers for acquiring API tokens from
- developer.clashofclans.com.</div>
+<div class="block">Authentication strategies for obtaining Clash of Clans API tokens.</div>
 </div>
 <div class="col-first odd-row-color"><a href="examples/package-summary.html">com.clanboards.examples</a></div>
 <div class="col-last odd-row-color">
@@ -95,11 +132,11 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><a href="http/package-summary.html">com.clanboards.http</a></div>
 <div class="col-last odd-row-color">
-<div class="block">HTTP abstractions decoupling transport concerns from the client.</div>
+<div class="block">HTTP transport abstractions for pluggable networking implementations.</div>
 </div>
 <div class="col-first even-row-color"><a href="throttle/package-summary.html">com.clanboards.throttle</a></div>
 <div class="col-last even-row-color">
-<div class="block">Token-aware rate limiting utilities.</div>
+<div class="block">Rate limiting utilities for managing API request throughput.</div>
 </div>
 <div class="col-first odd-row-color"><a href="token/package-summary.html">com.clanboards.token</a></div>
 <div class="col-last odd-row-color">
@@ -111,7 +148,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first odd-row-color"><a href="wars/package-summary.html">com.clanboards.wars</a></div>
 <div class="col-last odd-row-color">
-<div class="block">Models and helpers for clan wars and league play.</div>
+<div class="block">Data models for clan wars, war logs, and Clan War League functionality.</div>
 </div>
 </div>
 </div>
@@ -124,26 +161,38 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="Clan.html" title="class in com.clanboards">Clan</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Minimal Clan model for initial feature parity with get_clan.</div>
+<div class="block">Represents a Clash of Clans clan with essential information.</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="ClanMember.html" title="class in com.clanboards">ClanMember</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block">Represents a member of a Clash of Clans clan with profile and role information.</div>
+</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="CocClient.html" title="class in com.clanboards">CocClient</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Java client for the Clash of Clans API (initial scaffolding).</div>
+<div class="block">Primary client for interacting with the Clash of Clans API.</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="GoldPassSeason.html" title="class in com.clanboards">GoldPassSeason</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">&nbsp;</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="Label.html" title="class in com.clanboards">Label</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Represents a label for categorizing clans or players.</div>
+</div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="League.html" title="class in com.clanboards">League</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block">Represents a competitive league in Clash of Clans.</div>
+</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="Location.html" title="class in com.clanboards">Location</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Represents a geographical location for rankings and leaderboards.</div>
+</div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="Player.html" title="class in com.clanboards">Player</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block">Represents a Clash of Clans player with core profile information.</div>
+</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="RankedClan.html" title="class in com.clanboards">RankedClan</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Represents a clan with ranking information from leaderboards.</div>
+</div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">&nbsp;</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="SeasonRef.html" title="class in com.clanboards">SeasonRef</a></div>

@@ -82,7 +82,27 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">DefaultHttpTransport</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a></span></div>
-<div class="block">Default implementation based on Java 11 HttpClient with cookie support.</div>
+<div class="block">Default HTTP transport implementation using Java 11+ HttpClient.
+
+ This implementation provides production-ready HTTP transport with automatic
+ cookie management, configurable timeouts, and proper error handling.
+ Supports all standard HTTP methods required by the Clash of Clans API.
+
+ Features:
+ - Automatic cookie handling for session management
+ - 20-second connection timeout
+ - 30-second request timeout
+ - Thread-safe for concurrent use
+
+ Thread-safety: This class is thread-safe and designed for concurrent use.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="HttpTransport.html" title="interface in com.clanboards.http"><code>HttpTransport</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -95,7 +115,9 @@ implements <a href="HttpTransport.html" title="interface in com.clanboards.http"
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">DefaultHttpTransport</a>()</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a default HTTP transport with cookie support and timeouts.</div>
+</div>
 </div>
 </section>
 </li>
@@ -112,7 +134,9 @@ implements <a href="HttpTransport.html" title="interface in com.clanboards.http"
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HttpResponse.html" title="class in com.clanboards.http">HttpResponse</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#execute(com.clanboards.http.HttpRequest)" class="member-name-link">execute</a><wbr>(<a href="HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a>&nbsp;request)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Executes an HTTP request using the Java HttpClient.</div>
+</div>
 </div>
 </div>
 </div>
@@ -134,6 +158,12 @@ implements <a href="HttpTransport.html" title="interface in com.clanboards.http"
 <section class="detail" id="&lt;init&gt;()">
 <h3>DefaultHttpTransport</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">DefaultHttpTransport</span>()</div>
+<div class="block">Creates a default HTTP transport with cookie support and timeouts.
+
+ Configures the underlying HttpClient with:
+ - Universal cookie acceptance for session management
+ - 20-second connection timeout
+ - Automatic redirect following</div>
 </section>
 </li>
 </ul>
@@ -148,9 +178,21 @@ implements <a href="HttpTransport.html" title="interface in com.clanboards.http"
 <section class="detail" id="execute(com.clanboards.http.HttpRequest)">
 <h3>execute</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="HttpResponse.html" title="class in com.clanboards.http">HttpResponse</a></span>&nbsp;<span class="element-name">execute</span><wbr><span class="parameters">(<a href="HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a>&nbsp;request)</span></div>
+<div class="block">Executes an HTTP request using the Java HttpClient.
+
+ Converts the custom HttpRequest to a standard Java HttpRequest,
+ executes it with proper timeout handling, and converts the response
+ back to the custom HttpResponse format.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="HttpTransport.html#execute(com.clanboards.http.HttpRequest)">execute</a></code>&nbsp;in interface&nbsp;<code><a href="HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>request</code> - the HTTP request to execute</dd>
+<dt>Returns:</dt>
+<dd>HTTP response with status code and body</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if the request is interrupted, times out,
+         or encounters I/O errors</dd>
 </dl>
 </section>
 </li>

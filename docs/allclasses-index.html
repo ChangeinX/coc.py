@@ -61,94 +61,116 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="com/clanboards/auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab1">
-<div class="block">Strategy interface to obtain API tokens from email/password.</div>
+<div class="block">Strategy interface for obtaining Clash of Clans API tokens from developer credentials.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/Clan.html" title="class in com.clanboards">Clan</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Minimal Clan model for initial feature parity with get_clan.</div>
+<div class="block">Represents a Clash of Clans clan with essential information.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/ClanMember.html" title="class in com.clanboards">ClanMember</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a member of a Clash of Clans clan with profile and role information.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/examples/ClanRawJsonExample.html" title="class in com.clanboards.examples">ClanRawJsonExample</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Fetches a clan using the Java client with raw JSON enabled and prints the payload to stdout.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a clan war with state information and participating sides.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a Clan War League group with participating clans and round structure.</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/wars/ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Java client for the Clash of Clans API (initial scaffolding).</div>
+<div class="block">Primary client for interacting with the Clash of Clans API.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/wars/CwlClan.html" title="class in com.clanboards.wars">CwlClan</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/http/DefaultHttpTransport.html" title="class in com.clanboards.http">DefaultHttpTransport</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Default implementation based on Java 11 HttpClient with cookie support.</div>
+<div class="block">Default HTTP transport implementation using Java 11+ HttpClient.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/auth/DevSiteAuthenticator.html" title="class in com.clanboards.auth">DevSiteAuthenticator</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Authenticator that logs into developer.clashofclans.com and finds/creates API keys.</div>
+<div class="block">Production authenticator that manages API keys through the developer portal.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/GoldPassSeason.html" title="class in com.clanboards">GoldPassSeason</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/http/HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Simple immutable HTTP request model used by CocClient's pluggable transport.</div>
+<div class="block">Immutable HTTP request model used by the pluggable transport system.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/http/HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Builder for constructing immutable HttpRequest instances.</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="com/clanboards/http/HttpRequest.Method.html" title="enum class in com.clanboards.http">HttpRequest.Method</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
+<div class="block">Supported HTTP methods for API requests.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/http/HttpResponse.html" title="class in com.clanboards.http">HttpResponse</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Simple HTTP response model.</div>
+<div class="block">Immutable HTTP response model containing status code and response body.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="com/clanboards/http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab1">
-<div class="block">Pluggable HTTP transport used by CocClient to perform requests.</div>
+<div class="block">Abstraction for HTTP transport used by CocClient to execute API requests.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/Label.html" title="class in com.clanboards">Label</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a label for categorizing clans or players.</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/League.html" title="class in com.clanboards">League</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a competitive league in Clash of Clans.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/Location.html" title="class in com.clanboards">Location</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a geographical location for rankings and leaderboards.</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/examples/LoginExample.html" title="class in com.clanboards.examples">LoginExample</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab5"><a href="com/clanboards/exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab5">
-<div class="block">Thrown when a requested resource cannot be found (HTTP 404).</div>
+<div class="block">Exception thrown when a requested resource cannot be found.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/Player.html" title="class in com.clanboards">Player</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a Clash of Clans player with core profile information.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab5"><a href="com/clanboards/exceptions/PrivateWarLogException.html" title="class in com.clanboards.exceptions">PrivateWarLogException</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab5">
-<div class="block">Thrown when a clan's war log is private (HTTP 403 on war endpoints).</div>
+<div class="block">Exception thrown when attempting to access private war information.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a clan with ranking information from leaderboards.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/throttle/RateLimiter.html" title="class in com.clanboards.throttle">RateLimiter</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Simple sliding-window rate limiter allowing N requests per given time window.</div>
+<div class="block">Thread-safe sliding-window rate limiter for API request throttling.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/SeasonRef.html" title="class in com.clanboards">SeasonRef</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/util/TagUtil.html" title="class in com.clanboards.util">TagUtil</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Utility methods for handling Clash of Clans tags.</div>
+<div class="block">Utility methods for handling and normalizing Clash of Clans player and clan tags.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/token/TokenRotator.html" title="class in com.clanboards.token">TokenRotator</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Round-robin token provider.</div>
+<div class="block">Thread-safe round-robin token provider for API key rotation.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="com/clanboards/wars/WarSide.html" title="class in com.clanboards.wars">WarSide</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents one side (clan or opponent) in a clan war.</div>
+</div>
 </div>
 </div>
 </div>

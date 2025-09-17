@@ -77,6 +77,30 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ClanWar</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Represents a clan war with state information and participating sides.
+
+ This immutable data class contains essential war information including
+ the current state, team configuration, and details about both the clan
+ and opponent sides. Used for both regular clan wars and CWL wars.
+
+ War states follow the game progression:
+ <ul>
+ <li>"notInWar" - Clan is not currently in a war</li>
+ <li>"preparation" - War day preparation phase</li>
+ <li>"inWar" - Active war day with attacks ongoing</li>
+ <li>"warEnded" - War has concluded</li>
+ </ul>
+
+ Thread-safety: This class is immutable and thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><code>CocClient#getCurrentWar(String)</code></li>
+<li><code>CocClient#getCwlWar(String)</code></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,19 +130,29 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAttacksPerMember()" class="member-name-link">getAttacksPerMember</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the number of attacks each member can make.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WarSide.html" title="class in com.clanboards.wars">WarSide</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getClan()" class="member-name-link">getClan</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns information about the clan's side in the war.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WarSide.html" title="class in com.clanboards.wars">WarSide</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getOpponent()" class="member-name-link">getOpponent</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns information about the opponent's side in the war.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getState()" class="member-name-link">getState</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the current state of the war.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTeamSize()" class="member-name-link">getTeamSize</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the team size for this war.</div>
+</div>
 </div>
 </div>
 </div>
@@ -154,30 +188,61 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getState()">
 <h3>getState</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getState</span>()</div>
+<div class="block">Returns the current state of the war.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>war state ("notInWar", "preparation", "inWar", "warEnded")</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getTeamSize()">
 <h3>getTeamSize</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getTeamSize</span>()</div>
+<div class="block">Returns the team size for this war.
+
+ Team size determines how many players from each clan participate
+ in the war. Common sizes are 5, 10, 15, 20, 25, 30, 40, and 50.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>number of players per side</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getAttacksPerMember()">
 <h3>getAttacksPerMember</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></span>&nbsp;<span class="element-name">getAttacksPerMember</span>()</div>
+<div class="block">Returns the number of attacks each member can make.
+
+ Typically 2 attacks per member for regular wars, but may vary
+ for special events or CWL wars.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>attacks allowed per member, or null if not specified</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getClan()">
 <h3>getClan</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WarSide.html" title="class in com.clanboards.wars">WarSide</a></span>&nbsp;<span class="element-name">getClan</span>()</div>
+<div class="block">Returns information about the clan's side in the war.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan war side with statistics and member details</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getOpponent()">
 <h3>getOpponent</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WarSide.html" title="class in com.clanboards.wars">WarSide</a></span>&nbsp;<span class="element-name">getOpponent</span>()</div>
+<div class="block">Returns information about the opponent's side in the war.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>opponent war side with statistics and member details</dd>
+</dl>
 </section>
 </li>
 </ul>

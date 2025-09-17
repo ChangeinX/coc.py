@@ -83,11 +83,24 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">NotFoundException</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></span></div>
-<div class="block">Thrown when a requested resource cannot be found (HTTP 404).</div>
+<div class="block">Exception thrown when a requested resource cannot be found.
+
+ This exception is typically thrown in response to HTTP 404 errors from the
+ Clash of Clans API, indicating that the requested clan, player, war, or other
+ resource does not exist or is not accessible.
+
+ Common scenarios:
+ <ul>
+ <li>Clan tag does not exist or is malformed</li>
+ <li>Player tag does not exist or is malformed</li>
+ <li>War tag is invalid or war has ended</li>
+ <li>Location or league ID is invalid</li>
+ </ul></div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list">
+<li><code>CocClient</code></li>
 <li><a href="../../../serialized-form.html#com.clanboards.exceptions.NotFoundException">Serialized Form</a></li>
 </ul>
 </dd>
@@ -104,7 +117,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String)" class="member-name-link">NotFoundException</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a new NotFoundException with the specified detail message.</div>
+</div>
 </div>
 </section>
 </li>
@@ -133,6 +148,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(java.lang.String)">
 <h3>NotFoundException</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">NotFoundException</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
+<div class="block">Creates a new NotFoundException with the specified detail message.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>message</code> - detail message describing what resource was not found</dd>
+</dl>
 </section>
 </li>
 </ul>

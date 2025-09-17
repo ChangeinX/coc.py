@@ -83,11 +83,28 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">PrivateWarLogException</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></span></div>
-<div class="block">Thrown when a clan's war log is private (HTTP 403 on war endpoints).</div>
+<div class="block">Exception thrown when attempting to access private war information.
+
+ This exception is thrown in response to HTTP 403 errors from war-related
+ endpoints, indicating that the clan's war log or war information is set
+ to private and cannot be accessed through the public API.
+
+ Common scenarios:
+ <ul>
+ <li>Clan has set their war log to private in game settings</li>
+ <li>Current war information is restricted</li>
+ <li>Clan War League data is not publicly accessible</li>
+ </ul>
+
+ Applications should handle this exception gracefully and inform users
+ that the requested war data is not publicly available.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
-<ul class="see-list">
+<ul class="see-list-long">
+<li><code>CocClient#getWarLog(String, Integer)</code></li>
+<li><code>CocClient#getCurrentWar(String)</code></li>
+<li><code>CocClient#getClanWarLeagueGroup(String)</code></li>
 <li><a href="../../../serialized-form.html#com.clanboards.exceptions.PrivateWarLogException">Serialized Form</a></li>
 </ul>
 </dd>
@@ -104,7 +121,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String)" class="member-name-link">PrivateWarLogException</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a new PrivateWarLogException with the specified detail message.</div>
+</div>
 </div>
 </section>
 </li>
@@ -133,6 +152,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(java.lang.String)">
 <h3>PrivateWarLogException</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">PrivateWarLogException</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
+<div class="block">Creates a new PrivateWarLogException with the specified detail message.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>message</code> - detail message describing the private war access attempt</dd>
+</dl>
 </section>
 </li>
 </ul>

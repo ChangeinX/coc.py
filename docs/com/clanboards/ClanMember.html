@@ -77,6 +77,22 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ClanMember</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Represents a member of a Clash of Clans clan with profile and role information.
+
+ This immutable data class contains essential member properties including
+ identification, clan role, experience level, and trophy counts across
+ different game modes. Additional member data may be available through
+ the raw JSON attachment when enabled.
+
+ Thread-safety: This class is immutable and thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="CocClient.html#getMembers(java.lang.String,java.lang.Integer,java.lang.String,java.lang.String)"><code>CocClient.getMembers(String, Integer, String, String)</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,25 +122,39 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBuilderBaseTrophies()" class="member-name-link">getBuilderBaseTrophies</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the member's builder base trophy count.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getExpLevel()" class="member-name-link">getExpLevel</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the member's experience level.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getName()" class="member-name-link">getName</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the member's display name.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>com.fasterxml.jackson.databind.JsonNode</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRawJson()" class="member-name-link">getRawJson</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the raw JSON data from the API response.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRole()" class="member-name-link">getRole</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the member's role within the clan.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTag()" class="member-name-link">getTag</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the member's unique player tag.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTrophies()" class="member-name-link">getTrophies</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the member's main village trophy count.</div>
+</div>
 </div>
 </div>
 </div>
@@ -160,42 +190,111 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getTag()">
 <h3>getTag</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getTag</span>()</div>
+<div class="block">Returns the member's unique player tag.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>player tag (e.g., "#2PP", "#9UL2LJRJ")</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="Player.html#getTag()"><code>Player.getTag()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getName()">
 <h3>getName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getName</span>()</div>
+<div class="block">Returns the member's display name.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>player display name</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="Player.html#getName()"><code>Player.getName()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getRole()">
 <h3>getRole</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getRole</span>()</div>
+<div class="block">Returns the member's role within the clan.
+
+ Clan roles determine permissions for member management, war participation,
+ and clan settings. Common roles include "member", "elder", "coLeader", and "leader".</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan role designation</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getExpLevel()">
 <h3>getExpLevel</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getExpLevel</span>()</div>
+<div class="block">Returns the member's experience level.
+
+ Experience level represents overall player progression and is gained
+ through various in-game activities including donations, attacks, and challenges.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>player experience level</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getTrophies()">
 <h3>getTrophies</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getTrophies</span>()</div>
+<div class="block">Returns the member's main village trophy count.
+
+ Trophies are earned through multiplayer battles in the home village
+ and determine league placement and matchmaking.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>current trophy count for main village</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getBuilderBaseTrophies()">
 <h3>getBuilderBaseTrophies</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getBuilderBaseTrophies</span>()</div>
+<div class="block">Returns the member's builder base trophy count.
+
+ Builder base trophies are earned through builder base battles
+ and are tracked separately from main village trophies.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>current builder base trophy count</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getRawJson()">
 <h3>getRawJson</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">com.fasterxml.jackson.databind.JsonNode</span>&nbsp;<span class="element-name">getRawJson</span>()</div>
+<div class="block">Returns the raw JSON data from the API response.
+
+ Available only when raw JSON attachment is enabled in CocClient.
+ Contains the complete API response data including fields not
+ mapped to specific properties.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>raw JSON node or null if raw attachment is disabled</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="CocClient.html#isRawAttributeEnabled()"><code>CocClient.isRawAttributeEnabled()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 </ul>

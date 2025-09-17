@@ -77,6 +77,22 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Player</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Represents a Clash of Clans player with core profile information.
+
+ This immutable data class contains essential player properties including
+ identification, display information, and progression metrics. Additional
+ player data may be available through extended API endpoints.
+
+ Thread-safety: This class is immutable and thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="CocClient.html#getPlayer(java.lang.String)"><code>CocClient.getPlayer(String)</code></a></li>
+<li><a href="CocClient.html#verifyPlayerToken(java.lang.String,java.lang.String)"><code>CocClient.verifyPlayerToken(String, String)</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,13 +122,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getName()" class="member-name-link">getName</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the player's display name.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTag()" class="member-name-link">getTag</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the player's unique identifier tag.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTownHallLevel()" class="member-name-link">getTownHallLevel</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the player's town hall level.</div>
+</div>
 </div>
 </div>
 </div>
@@ -148,18 +170,45 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getTag()">
 <h3>getTag</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getTag</span>()</div>
+<div class="block">Returns the player's unique identifier tag.
+
+ Player tags are unique identifiers in the format "#XXXXXXXX" where X
+ represents alphanumeric characters. Tags are case-insensitive and
+ globally unique across all players.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>player tag (e.g., "#2PP", "#9UL2LJRJ")</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getName()">
 <h3>getName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getName</span>()</div>
+<div class="block">Returns the player's display name.
+
+ Player names are chosen by the player and may contain spaces,
+ special characters, and Unicode text. Names are not guaranteed
+ to be unique and can be changed by the player.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>player display name</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getTownHallLevel()">
 <h3>getTownHallLevel</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getTownHallLevel</span>()</div>
+<div class="block">Returns the player's town hall level.
+
+ Town hall level represents the player's main progression milestone
+ in the home village. Higher levels unlock new buildings, troops,
+ and game features. Current maximum is typically 16+.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>town hall level (1-16+)</dd>
+</dl>
 </section>
 </li>
 </ul>

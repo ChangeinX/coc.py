@@ -77,6 +77,21 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">WarSide</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Represents one side (clan or opponent) in a clan war.
+
+ This immutable data class contains war performance statistics for one
+ participating clan, including identification, total stars earned, and
+ destruction percentage achieved across all attacks.
+
+ Thread-safety: This class is immutable and thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="ClanWar.html" title="class in com.clanboards.wars"><code>ClanWar</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,16 +121,24 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDestructionPercentage()" class="member-name-link">getDestructionPercentage</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the total destruction percentage achieved by this side.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getName()" class="member-name-link">getName</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan name for this war side.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStars()" class="member-name-link">getStars</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the total stars earned by this side.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTag()" class="member-name-link">getTag</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the clan tag for this war side.</div>
+</div>
 </div>
 </div>
 </div>
@@ -151,24 +174,50 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getTag()">
 <h3>getTag</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getTag</span>()</div>
+<div class="block">Returns the clan tag for this war side.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan tag (e.g., "#2PP", "#9UL2LJRJ")</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getName()">
 <h3>getName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getName</span>()</div>
+<div class="block">Returns the clan name for this war side.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>clan display name</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getStars()">
 <h3>getStars</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getStars</span>()</div>
+<div class="block">Returns the total stars earned by this side.
+
+ Stars are earned through successful attacks, with a maximum of
+ 3 stars per attack. Total stars determine war victory.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>total stars earned (0 to teamSize * 3)</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getDestructionPercentage()">
 <h3>getDestructionPercentage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getDestructionPercentage</span>()</div>
+<div class="block">Returns the total destruction percentage achieved by this side.
+
+ Destruction percentage represents the cumulative damage dealt
+ across all attacks. Used as a tiebreaker when star counts are equal.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>destruction percentage (0.0 to 100.0 * teamSize)</dd>
+</dl>
 </section>
 </li>
 </ul>

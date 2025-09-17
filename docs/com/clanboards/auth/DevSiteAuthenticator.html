@@ -82,8 +82,29 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">DevSiteAuthenticator</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a></span></div>
-<div class="block">Authenticator that logs into developer.clashofclans.com and finds/creates API keys.
- It mirrors the Python client's key initialization logic at a high level.</div>
+<div class="block">Production authenticator that manages API keys through the developer portal.
+
+ This implementation automatically handles the full authentication workflow:
+ <ul>
+ <li>Logs into developer.clashofclans.com with email/password credentials</li>
+ <li>Determines the client's IP address from temporary tokens</li>
+ <li>Searches for existing compatible API keys</li>
+ <li>Creates new keys when needed, respecting platform limits</li>
+ <li>Manages key lifecycle including cleanup of mismatched keys</li>
+ </ul>
+
+ The authenticator is designed to be robust and handle common scenarios like
+ IP address changes, key limits, and temporary authentication failures.
+
+ Thread-safety: This class is thread-safe for concurrent authentication attempts.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="Authenticator.html" title="interface in com.clanboards.auth"><code>Authenticator</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -114,13 +135,17 @@ implements <a href="Authenticator.html" title="interface in com.clanboards.auth"
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.clanboards.http.HttpTransport)" class="member-name-link">DevSiteAuthenticator</a><wbr>(<a href="../http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates an authenticator with default settings.</div>
+</div>
 <div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(com.clanboards.http.HttpTransport,java.lang.String,java.lang.String,int,java.lang.String)" class="member-name-link">DevSiteAuthenticator</a><wbr>(<a href="../http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;keyName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;keyScope,
  int&nbsp;keyCount,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;ip)</code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Creates an authenticator with custom configuration.</div>
+</div>
 </div>
 </section>
 </li>
@@ -140,7 +165,7 @@ implements <a href="Authenticator.html" title="interface in com.clanboards.auth"
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password,
  int&nbsp;count)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns one or more bearer tokens (API keys) for the Clash of Clans API.</div>
+<div class="block">Obtains API tokens by authenticating with the developer portal.</div>
 </div>
 </div>
 </div>
@@ -202,6 +227,15 @@ implements <a href="Authenticator.html" title="interface in com.clanboards.auth"
 <section class="detail" id="&lt;init&gt;(com.clanboards.http.HttpTransport)">
 <h3>DevSiteAuthenticator</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">DevSiteAuthenticator</span><wbr><span class="parameters">(<a href="../http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a>&nbsp;transport)</span></div>
+<div class="block">Creates an authenticator with default settings.
+
+ Uses default key name, clash scope, single key, and automatic IP detection.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>transport</code> - HTTP transport for making requests to the developer portal</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - if transport is null</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -212,6 +246,17 @@ implements <a href="Authenticator.html" title="interface in com.clanboards.auth"
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;keyScope,
  int&nbsp;keyCount,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;ip)</span></div>
+<div class="block">Creates an authenticator with custom configuration.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>transport</code> - HTTP transport for making requests to the developer portal</dd>
+<dd><code>keyName</code> - name to assign to created API keys (null uses default)</dd>
+<dd><code>keyScope</code> - scope for API keys ("clash" for standard access)</dd>
+<dd><code>keyCount</code> - maximum number of keys to manage (clamped to 1-10)</dd>
+<dd><code>ip</code> - fixed IP address for keys (null for automatic detection)</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - if transport is null</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -228,11 +273,26 @@ implements <a href="Authenticator.html" title="interface in com.clanboards.auth"
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">obtainTokens</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password,
  int&nbsp;count)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Authenticator.html#obtainTokens(java.lang.String,java.lang.String,int)">Authenticator</a></code></span></div>
-<div class="block">Returns one or more bearer tokens (API keys) for the Clash of Clans API.</div>
+<div class="block">Obtains API tokens by authenticating with the developer portal.
+
+ This method performs the complete authentication and key management workflow:
+ 1. Logs into the developer portal with provided credentials
+ 2. Determines the client IP address (fixed or automatic)
+ 3. Searches for existing compatible API keys
+ 4. Creates new keys if needed, cleaning up incompatible ones first
+ 5. Returns the requested number of valid tokens</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="Authenticator.html#obtainTokens(java.lang.String,java.lang.String,int)">obtainTokens</a></code>&nbsp;in interface&nbsp;<code><a href="Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>email</code> - developer account email</dd>
+<dd><code>password</code> - developer account password</dd>
+<dd><code>count</code> - number of tokens requested (clamped to 1-10)</dd>
+<dt>Returns:</dt>
+<dd>list of valid API tokens</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if credentials are invalid</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if authentication or key management fails</dd>
 </dl>
 </section>
 </li>

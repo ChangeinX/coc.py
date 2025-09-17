@@ -77,8 +77,22 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">HttpTransport</span></div>
-<div class="block">Pluggable HTTP transport used by CocClient to perform requests.
- Tests can supply a fake implementation to avoid network I/O.</div>
+<div class="block">Abstraction for HTTP transport used by CocClient to execute API requests.
+
+ This interface allows for pluggable HTTP implementations, enabling easy testing
+ with mock transports and customization of HTTP behavior (timeouts, retries,
+ connection pooling, etc.). Implementations should be thread-safe for concurrent use.
+
+ Thread-safety: Implementations must be thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="DefaultHttpTransport.html" title="class in com.clanboards.http"><code>DefaultHttpTransport</code></a></li>
+<li><code>CocClient</code></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -95,7 +109,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="HttpResponse.html" title="class in com.clanboards.http">HttpResponse</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#execute(com.clanboards.http.HttpRequest)" class="member-name-link">execute</a><wbr>(<a href="HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a>&nbsp;request)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Executes an HTTP request and returns the response.</div>
+</div>
 </div>
 </div>
 </div>
@@ -114,6 +130,20 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="execute(com.clanboards.http.HttpRequest)">
 <h3>execute</h3>
 <div class="member-signature"><span class="return-type"><a href="HttpResponse.html" title="class in com.clanboards.http">HttpResponse</a></span>&nbsp;<span class="element-name">execute</span><wbr><span class="parameters">(<a href="HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a>&nbsp;request)</span></div>
+<div class="block">Executes an HTTP request and returns the response.
+
+ Implementations should handle all HTTP method types, properly set headers,
+ and manage timeouts and error conditions. Network errors should be wrapped
+ in RuntimeException for consistent error handling.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>request</code> - the HTTP request to execute</dd>
+<dt>Returns:</dt>
+<dd>HTTP response with status code and body</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if the request fails due to network issues,
+         timeouts, or other I/O problems</dd>
+</dl>
 </section>
 </li>
 </ul>

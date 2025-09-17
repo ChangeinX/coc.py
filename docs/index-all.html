@@ -54,19 +54,23 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="com/clanboards/throttle/RateLimiter.html#acquire()" class="member-name-link">acquire()</a> - Method in class com.clanboards.throttle.<a href="com/clanboards/throttle/RateLimiter.html" title="class in com.clanboards.throttle">RateLimiter</a></dt>
 <dd>
-<div class="block">Blocks until a slot is available, then records this request.</div>
+<div class="block">Acquires a permit to make a request, blocking if necessary.</div>
 </dd>
 <dt><a href="com/clanboards/auth/Authenticator.html" class="type-name-link" title="interface in com.clanboards.auth">Authenticator</a> - Interface in <a href="com/clanboards/auth/package-summary.html">com.clanboards.auth</a></dt>
 <dd>
-<div class="block">Strategy interface to obtain API tokens from email/password.</div>
+<div class="block">Strategy interface for obtaining Clash of Clans API tokens from developer credentials.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:B">B</h2>
 <dl class="index">
 <dt><a href="com/clanboards/http/HttpRequest.Builder.html#body(byte%5B%5D)" class="member-name-link">body(byte[])</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets the request body.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpRequest.Builder.html#build()" class="member-name-link">build()</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Builds an immutable HttpRequest instance.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpRequest.Builder.html#%3Cinit%3E()" class="member-name-link">Builder()</a> - Constructor for class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -74,12 +78,14 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="com/clanboards/Clan.html" class="type-name-link" title="class in com.clanboards">Clan</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
 <dd>
-<div class="block">Minimal Clan model for initial feature parity with get_clan.</div>
+<div class="block">Represents a Clash of Clans clan with essential information.</div>
 </dd>
 <dt><a href="com/clanboards/Clan.html#%3Cinit%3E()" class="member-name-link">Clan()</a> - Constructor for class com.clanboards.<a href="com/clanboards/Clan.html" title="class in com.clanboards">Clan</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/ClanMember.html" class="type-name-link" title="class in com.clanboards">ClanMember</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Represents a member of a Clash of Clans clan with profile and role information.</div>
+</dd>
 <dt><a href="com/clanboards/ClanMember.html#%3Cinit%3E()" class="member-name-link">ClanMember()</a> - Constructor for class com.clanboards.<a href="com/clanboards/ClanMember.html" title="class in com.clanboards">ClanMember</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/examples/ClanRawJsonExample.html" class="type-name-link" title="class in com.clanboards.examples">ClanRawJsonExample</a> - Class in <a href="com/clanboards/examples/package-summary.html">com.clanboards.examples</a></dt>
@@ -87,11 +93,15 @@ loadScripts(document, 'script');</script>
 <div class="block">Fetches a clan using the Java client with raw JSON enabled and prints the payload to stdout.</div>
 </dd>
 <dt><a href="com/clanboards/wars/ClanWar.html" class="type-name-link" title="class in com.clanboards.wars">ClanWar</a> - Class in <a href="com/clanboards/wars/package-summary.html">com.clanboards.wars</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Represents a clan war with state information and participating sides.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWar.html#%3Cinit%3E()" class="member-name-link">ClanWar()</a> - Constructor for class com.clanboards.wars.<a href="com/clanboards/wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html" class="type-name-link" title="class in com.clanboards.wars">ClanWarLeagueGroup</a> - Class in <a href="com/clanboards/wars/package-summary.html">com.clanboards.wars</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Represents a Clan War League group with participating clans and round structure.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#%3Cinit%3E()" class="member-name-link">ClanWarLeagueGroup()</a> - Constructor for class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/ClanWarLogEntry.html" class="type-name-link" title="class in com.clanboards.wars">ClanWarLogEntry</a> - Class in <a href="com/clanboards/wars/package-summary.html">com.clanboards.wars</a></dt>
@@ -100,24 +110,31 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/CocClient.html" class="type-name-link" title="class in com.clanboards">CocClient</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
 <dd>
-<div class="block">Java client for the Clash of Clans API (initial scaffolding).</div>
+<div class="block">Primary client for interacting with the Clash of Clans API.</div>
 </dd>
 <dt><a href="com/clanboards/CocClient.html#%3Cinit%3E(com.clanboards.http.HttpTransport,com.clanboards.auth.Authenticator)" class="member-name-link">CocClient(HttpTransport, Authenticator)</a> - Constructor for class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a client with default API base URL and raw JSON disabled.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#%3Cinit%3E(com.clanboards.http.HttpTransport,com.clanboards.auth.Authenticator,boolean)" class="member-name-link">CocClient(HttpTransport, Authenticator, boolean)</a> - Constructor for class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a client with default API base URL and configurable raw JSON support.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#%3Cinit%3E(com.clanboards.http.HttpTransport,com.clanboards.auth.Authenticator,java.lang.String)" class="member-name-link">CocClient(HttpTransport, Authenticator, String)</a> - Constructor for class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a client with custom API base URL and raw JSON disabled.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#%3Cinit%3E(com.clanboards.http.HttpTransport,com.clanboards.auth.Authenticator,java.lang.String,boolean)" class="member-name-link">CocClient(HttpTransport, Authenticator, String, boolean)</a> - Constructor for class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Primary constructor with full configuration options.</div>
+</dd>
 <dt><a href="com/clanboards/package-summary.html">com.clanboards</a> - package com.clanboards</dt>
 <dd>
-<div class="block">Core public API for the Clash of Clans Java client.</div>
+<div class="block">Core public API for the Clash of Clans Java client library.</div>
 </dd>
 <dt><a href="com/clanboards/auth/package-summary.html">com.clanboards.auth</a> - package com.clanboards.auth</dt>
 <dd>
-<div class="block">Authentication helpers for acquiring API tokens from
- developer.clashofclans.com.</div>
+<div class="block">Authentication strategies for obtaining Clash of Clans API tokens.</div>
 </dd>
 <dt><a href="com/clanboards/examples/package-summary.html">com.clanboards.examples</a> - package com.clanboards.examples</dt>
 <dd>
@@ -127,11 +144,11 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/http/package-summary.html">com.clanboards.http</a> - package com.clanboards.http</dt>
 <dd>
-<div class="block">HTTP abstractions decoupling transport concerns from the client.</div>
+<div class="block">HTTP transport abstractions for pluggable networking implementations.</div>
 </dd>
 <dt><a href="com/clanboards/throttle/package-summary.html">com.clanboards.throttle</a> - package com.clanboards.throttle</dt>
 <dd>
-<div class="block">Token-aware rate limiting utilities.</div>
+<div class="block">Rate limiting utilities for managing API request throughput.</div>
 </dd>
 <dt><a href="com/clanboards/token/package-summary.html">com.clanboards.token</a> - package com.clanboards.token</dt>
 <dd>
@@ -143,11 +160,11 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/clanboards/wars/package-summary.html">com.clanboards.wars</a> - package com.clanboards.wars</dt>
 <dd>
-<div class="block">Models and helpers for clan wars and league play.</div>
+<div class="block">Data models for clan wars, war logs, and Clan War League functionality.</div>
 </dd>
 <dt><a href="com/clanboards/util/TagUtil.html#correctTag(java.lang.String)" class="member-name-link">correctTag(String)</a> - Static method in class com.clanboards.util.<a href="com/clanboards/util/TagUtil.html" title="class in com.clanboards.util">TagUtil</a></dt>
 <dd>
-<div class="block">Attempt to correct a malformed tag to in-game format.</div>
+<div class="block">Corrects a potentially malformed tag to standard in-game format.</div>
 </dd>
 <dt><a href="com/clanboards/wars/CwlClan.html" class="type-name-link" title="class in com.clanboards.wars">CwlClan</a> - Class in <a href="com/clanboards/wars/package-summary.html">com.clanboards.wars</a></dt>
 <dd>&nbsp;</dd>
@@ -162,238 +179,402 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/http/DefaultHttpTransport.html" class="type-name-link" title="class in com.clanboards.http">DefaultHttpTransport</a> - Class in <a href="com/clanboards/http/package-summary.html">com.clanboards.http</a></dt>
 <dd>
-<div class="block">Default implementation based on Java 11 HttpClient with cookie support.</div>
+<div class="block">Default HTTP transport implementation using Java 11+ HttpClient.</div>
 </dd>
 <dt><a href="com/clanboards/http/DefaultHttpTransport.html#%3Cinit%3E()" class="member-name-link">DefaultHttpTransport()</a> - Constructor for class com.clanboards.http.<a href="com/clanboards/http/DefaultHttpTransport.html" title="class in com.clanboards.http">DefaultHttpTransport</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a default HTTP transport with cookie support and timeouts.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpRequest.Method.html#DELETE" class="member-name-link">DELETE</a> - Enum constant in enum class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Method.html" title="enum class in com.clanboards.http">HttpRequest.Method</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/auth/DevSiteAuthenticator.html" class="type-name-link" title="class in com.clanboards.auth">DevSiteAuthenticator</a> - Class in <a href="com/clanboards/auth/package-summary.html">com.clanboards.auth</a></dt>
 <dd>
-<div class="block">Authenticator that logs into developer.clashofclans.com and finds/creates API keys.</div>
+<div class="block">Production authenticator that manages API keys through the developer portal.</div>
 </dd>
 <dt><a href="com/clanboards/auth/DevSiteAuthenticator.html#%3Cinit%3E(com.clanboards.http.HttpTransport)" class="member-name-link">DevSiteAuthenticator(HttpTransport)</a> - Constructor for class com.clanboards.auth.<a href="com/clanboards/auth/DevSiteAuthenticator.html" title="class in com.clanboards.auth">DevSiteAuthenticator</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates an authenticator with default settings.</div>
+</dd>
 <dt><a href="com/clanboards/auth/DevSiteAuthenticator.html#%3Cinit%3E(com.clanboards.http.HttpTransport,java.lang.String,java.lang.String,int,java.lang.String)" class="member-name-link">DevSiteAuthenticator(HttpTransport, String, String, int, String)</a> - Constructor for class com.clanboards.auth.<a href="com/clanboards/auth/DevSiteAuthenticator.html" title="class in com.clanboards.auth">DevSiteAuthenticator</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates an authenticator with custom configuration.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:E">E</h2>
 <dl class="index">
 <dt><a href="com/clanboards/util/TagUtil.html#encodeForPath(java.lang.String)" class="member-name-link">encodeForPath(String)</a> - Static method in class com.clanboards.util.<a href="com/clanboards/util/TagUtil.html" title="class in com.clanboards.util">TagUtil</a></dt>
 <dd>
-<div class="block">Encode a tag for use in a URL path segment (percent-encode '#').</div>
+<div class="block">Encodes a tag for safe use in URL path segments.</div>
 </dd>
 <dt><a href="com/clanboards/http/DefaultHttpTransport.html#execute(com.clanboards.http.HttpRequest)" class="member-name-link">execute(HttpRequest)</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/DefaultHttpTransport.html" title="class in com.clanboards.http">DefaultHttpTransport</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Executes an HTTP request using the Java HttpClient.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpTransport.html#execute(com.clanboards.http.HttpRequest)" class="member-name-link">execute(HttpRequest)</a> - Method in interface com.clanboards.http.<a href="com/clanboards/http/HttpTransport.html" title="interface in com.clanboards.http">HttpTransport</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Executes an HTTP request and returns the response.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
 <dt><a href="com/clanboards/http/HttpRequest.Method.html#GET" class="member-name-link">GET</a> - Enum constant in enum class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Method.html" title="enum class in com.clanboards.http">HttpRequest.Method</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/token/TokenRotator.html#getAll()" class="member-name-link">getAll()</a> - Method in class com.clanboards.token.<a href="com/clanboards/token/TokenRotator.html" title="class in com.clanboards.token">TokenRotator</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns an immutable list of all configured tokens.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWar.html#getAttacksPerMember()" class="member-name-link">getAttacksPerMember()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the number of attacks each member can make.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLogEntry.html#getAttacksPerMember()" class="member-name-link">getAttacksPerMember()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/http/HttpRequest.html#getBody()" class="member-name-link">getBody()</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the request body as a byte array.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpResponse.html#getBody()" class="member-name-link">getBody()</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpResponse.html" title="class in com.clanboards.http">HttpResponse</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the response body as a byte array.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getBuilderBaseLeague(int)" class="member-name-link">getBuilderBaseLeague(int)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves information about a specific builder base league.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getBuilderBaseLeagues(java.lang.Integer)" class="member-name-link">getBuilderBaseLeagues(Integer)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves all available builder base leagues.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#getBuilderBasePoints()" class="member-name-link">getBuilderBasePoints()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's builder base trophy points.</div>
+</dd>
 <dt><a href="com/clanboards/ClanMember.html#getBuilderBaseTrophies()" class="member-name-link">getBuilderBaseTrophies()</a> - Method in class com.clanboards.<a href="com/clanboards/ClanMember.html" title="class in com.clanboards">ClanMember</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the member's builder base trophy count.</div>
+</dd>
 <dt><a href="com/clanboards/RankedPlayer.html#getBuilderBaseTrophies()" class="member-name-link">getBuilderBaseTrophies()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/CocClient.html#getCapitalLeague(int)" class="member-name-link">getCapitalLeague(int)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves information about a specific clan capital league.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getCapitalLeagues(java.lang.Integer)" class="member-name-link">getCapitalLeagues(Integer)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves all available clan capital leagues.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#getCapitalPoints()" class="member-name-link">getCapitalPoints()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's capital trophy points.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWar.html#getClan()" class="member-name-link">getClan()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns information about the clan's side in the war.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLogEntry.html#getClan()" class="member-name-link">getClan()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/CocClient.html#getClan(java.lang.String)" class="member-name-link">getClan(String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
 <dd>
-<div class="block">Get information about a single clan by tag.</div>
+<div class="block">Retrieves comprehensive information about a clan by its tag.</div>
 </dd>
 <dt><a href="com/clanboards/CocClient.html#getClanLabels()" class="member-name-link">getClanLabels()</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves all available clan labels from the API.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#getClans()" class="member-name-link">getClans()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the list of clans participating in this CWL group.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getClanWarLeagueGroup(java.lang.String)" class="member-name-link">getClanWarLeagueGroup(String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves clan war league group information for a clan.</div>
+</dd>
 <dt><a href="com/clanboards/Location.html#getCountryCode()" class="member-name-link">getCountryCode()</a> - Method in class com.clanboards.<a href="com/clanboards/Location.html" title="class in com.clanboards">Location</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the ISO country code for this location.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getCurrentGoldPassSeason()" class="member-name-link">getCurrentGoldPassSeason()</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves information about the current Gold Pass season.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getCurrentWar(java.lang.String)" class="member-name-link">getCurrentWar(String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves information about a clan's current war.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getCwlWar(java.lang.String)" class="member-name-link">getCwlWar(String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves detailed information about a specific clan war league war.</div>
+</dd>
 <dt><a href="com/clanboards/wars/WarSide.html#getDestructionPercentage()" class="member-name-link">getDestructionPercentage()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/WarSide.html" title="class in com.clanboards.wars">WarSide</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the total destruction percentage achieved by this side.</div>
+</dd>
 <dt><a href="com/clanboards/GoldPassSeason.html#getEndTime()" class="member-name-link">getEndTime()</a> - Method in class com.clanboards.<a href="com/clanboards/GoldPassSeason.html" title="class in com.clanboards">GoldPassSeason</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/ClanWarLogEntry.html#getEndTime()" class="member-name-link">getEndTime()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/ClanMember.html#getExpLevel()" class="member-name-link">getExpLevel()</a> - Method in class com.clanboards.<a href="com/clanboards/ClanMember.html" title="class in com.clanboards">ClanMember</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the member's experience level.</div>
+</dd>
 <dt><a href="com/clanboards/RankedPlayer.html#getExpLevel()" class="member-name-link">getExpLevel()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/http/HttpRequest.html#getHeaders()" class="member-name-link">getHeaders()</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns an unmodifiable map of HTTP headers.</div>
+</dd>
 <dt><a href="com/clanboards/Label.html#getId()" class="member-name-link">getId()</a> - Method in class com.clanboards.<a href="com/clanboards/Label.html" title="class in com.clanboards">Label</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the label's unique identifier.</div>
+</dd>
 <dt><a href="com/clanboards/League.html#getId()" class="member-name-link">getId()</a> - Method in class com.clanboards.<a href="com/clanboards/League.html" title="class in com.clanboards">League</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the league's unique identifier.</div>
+</dd>
 <dt><a href="com/clanboards/Location.html#getId()" class="member-name-link">getId()</a> - Method in class com.clanboards.<a href="com/clanboards/Location.html" title="class in com.clanboards">Location</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the location's unique identifier.</div>
+</dd>
 <dt><a href="com/clanboards/SeasonRef.html#getId()" class="member-name-link">getId()</a> - Method in class com.clanboards.<a href="com/clanboards/SeasonRef.html" title="class in com.clanboards">SeasonRef</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/Location.html#getIsCountry()" class="member-name-link">getIsCountry()</a> - Method in class com.clanboards.<a href="com/clanboards/Location.html" title="class in com.clanboards">Location</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns whether this location represents a specific country.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getLeague(int)" class="member-name-link">getLeague(int)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves information about a specific league by its ID.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getLeagueSeasonInfo(int,java.lang.String,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLeagueSeasonInfo(int, String, Integer, String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves player rankings for a specific league season.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getLeagueSeasons(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLeagueSeasons(int, Integer, String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves available seasons for a specific league.</div>
+</dd>
 <dt><a href="com/clanboards/Clan.html#getLevel()" class="member-name-link">getLevel()</a> - Method in class com.clanboards.<a href="com/clanboards/Clan.html" title="class in com.clanboards">Clan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's experience level.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#getLevel()" class="member-name-link">getLevel()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's experience level.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getLocation(int)" class="member-name-link">getLocation(int)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves information about a specific location by its ID.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getLocationBuilderBaseClanRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationBuilderBaseClanRankings(int, Integer, String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves builder base clan rankings for a specific location.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getLocationBuilderBasePlayerRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationBuilderBasePlayerRankings(int, Integer, String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves builder base player rankings for a specific location.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getLocationCapitalClanRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationCapitalClanRankings(int, Integer, String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves clan capital rankings for a specific location.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getLocationClanRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationClanRankings(int, Integer, String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves clan rankings for a specific location (main village).</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getLocationPlayerRankings(int,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getLocationPlayerRankings(int, Integer, String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves player rankings for a specific location (main village).</div>
+</dd>
 <dt><a href="com/clanboards/Clan.html#getMemberCount()" class="member-name-link">getMemberCount()</a> - Method in class com.clanboards.<a href="com/clanboards/Clan.html" title="class in com.clanboards">Clan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the current number of members in the clan.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#getMemberCount()" class="member-name-link">getMemberCount()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the current number of members in the clan.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getMembers(java.lang.String,java.lang.Integer,java.lang.String,java.lang.String)" class="member-name-link">getMembers(String, Integer, String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
 <dd>
-<div class="block">List clan members.</div>
+<div class="block">Retrieves the member list for a specified clan.</div>
 </dd>
 <dt><a href="com/clanboards/http/HttpRequest.html#getMethod()" class="member-name-link">getMethod()</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the HTTP method for this request.</div>
+</dd>
 <dt><a href="com/clanboards/Clan.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.<a href="com/clanboards/Clan.html" title="class in com.clanboards">Clan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's display name.</div>
+</dd>
 <dt><a href="com/clanboards/ClanMember.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.<a href="com/clanboards/ClanMember.html" title="class in com.clanboards">ClanMember</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the member's display name.</div>
+</dd>
 <dt><a href="com/clanboards/Label.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.<a href="com/clanboards/Label.html" title="class in com.clanboards">Label</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the label's display name.</div>
+</dd>
 <dt><a href="com/clanboards/League.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.<a href="com/clanboards/League.html" title="class in com.clanboards">League</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the league's display name.</div>
+</dd>
 <dt><a href="com/clanboards/Location.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.<a href="com/clanboards/Location.html" title="class in com.clanboards">Location</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the location's display name.</div>
+</dd>
 <dt><a href="com/clanboards/Player.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.<a href="com/clanboards/Player.html" title="class in com.clanboards">Player</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the player's display name.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's display name.</div>
+</dd>
 <dt><a href="com/clanboards/RankedPlayer.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/CwlClan.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/CwlClan.html" title="class in com.clanboards.wars">CwlClan</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/WarSide.html#getName()" class="member-name-link">getName()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/WarSide.html" title="class in com.clanboards.wars">WarSide</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan name for this war side.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#getNumberOfRounds()" class="member-name-link">getNumberOfRounds()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the total number of rounds in this CWL group.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWar.html#getOpponent()" class="member-name-link">getOpponent()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns information about the opponent's side in the war.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLogEntry.html#getOpponent()" class="member-name-link">getOpponent()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/CocClient.html#getPlayer(java.lang.String)" class="member-name-link">getPlayer(String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves comprehensive information about a player by their tag.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getPlayerLabels()" class="member-name-link">getPlayerLabels()</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves all available player labels from the API.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#getPoints()" class="member-name-link">getPoints()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's main village trophy points.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#getPreviousRank()" class="member-name-link">getPreviousRank()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's previous ranking position.</div>
+</dd>
 <dt><a href="com/clanboards/RankedPlayer.html#getPreviousRank()" class="member-name-link">getPreviousRank()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/RankedClan.html#getRank()" class="member-name-link">getRank()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's current ranking position.</div>
+</dd>
 <dt><a href="com/clanboards/RankedPlayer.html#getRank()" class="member-name-link">getRank()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/Clan.html#getRawJson()" class="member-name-link">getRawJson()</a> - Method in class com.clanboards.<a href="com/clanboards/Clan.html" title="class in com.clanboards">Clan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the raw JSON data from the API response.</div>
+</dd>
 <dt><a href="com/clanboards/ClanMember.html#getRawJson()" class="member-name-link">getRawJson()</a> - Method in class com.clanboards.<a href="com/clanboards/ClanMember.html" title="class in com.clanboards">ClanMember</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the raw JSON data from the API response.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#getRawJson()" class="member-name-link">getRawJson()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the raw JSON data from the API response.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLogEntry.html#getResult()" class="member-name-link">getResult()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/ClanMember.html#getRole()" class="member-name-link">getRole()</a> - Method in class com.clanboards.<a href="com/clanboards/ClanMember.html" title="class in com.clanboards">ClanMember</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the member's role within the clan.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#getRounds()" class="member-name-link">getRounds()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the round structure with war tags for each round.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#getSeason()" class="member-name-link">getSeason()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the season identifier for this CWL group.</div>
+</dd>
 <dt><a href="com/clanboards/wars/WarSide.html#getStars()" class="member-name-link">getStars()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/WarSide.html" title="class in com.clanboards.wars">WarSide</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the total stars earned by this side.</div>
+</dd>
 <dt><a href="com/clanboards/GoldPassSeason.html#getStartTime()" class="member-name-link">getStartTime()</a> - Method in class com.clanboards.<a href="com/clanboards/GoldPassSeason.html" title="class in com.clanboards">GoldPassSeason</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/ClanWar.html#getState()" class="member-name-link">getState()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the current state of the war.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#getState()" class="member-name-link">getState()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the current state of the CWL group.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpResponse.html#getStatusCode()" class="member-name-link">getStatusCode()</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpResponse.html" title="class in com.clanboards.http">HttpResponse</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the HTTP status code for this response.</div>
+</dd>
 <dt><a href="com/clanboards/Clan.html#getTag()" class="member-name-link">getTag()</a> - Method in class com.clanboards.<a href="com/clanboards/Clan.html" title="class in com.clanboards">Clan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's unique identifier tag.</div>
+</dd>
 <dt><a href="com/clanboards/ClanMember.html#getTag()" class="member-name-link">getTag()</a> - Method in class com.clanboards.<a href="com/clanboards/ClanMember.html" title="class in com.clanboards">ClanMember</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the member's unique player tag.</div>
+</dd>
 <dt><a href="com/clanboards/Player.html#getTag()" class="member-name-link">getTag()</a> - Method in class com.clanboards.<a href="com/clanboards/Player.html" title="class in com.clanboards">Player</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the player's unique identifier tag.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#getTag()" class="member-name-link">getTag()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan's unique identifier tag.</div>
+</dd>
 <dt><a href="com/clanboards/RankedPlayer.html#getTag()" class="member-name-link">getTag()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/CwlClan.html#getTag()" class="member-name-link">getTag()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/CwlClan.html" title="class in com.clanboards.wars">CwlClan</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/WarSide.html#getTag()" class="member-name-link">getTag()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/WarSide.html" title="class in com.clanboards.wars">WarSide</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the clan tag for this war side.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWar.html#getTeamSize()" class="member-name-link">getTeamSize()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWar.html" title="class in com.clanboards.wars">ClanWar</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the team size for this war.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLogEntry.html#getTeamSize()" class="member-name-link">getTeamSize()</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLogEntry.html" title="class in com.clanboards.wars">ClanWarLogEntry</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/CocClient.html#getToken()" class="member-name-link">getToken()</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
 <dd>
-<div class="block">Expose first token (read-only) for diagnostics.</div>
+<div class="block">Returns the first available API token for diagnostic purposes.</div>
 </dd>
 <dt><a href="com/clanboards/Player.html#getTownHallLevel()" class="member-name-link">getTownHallLevel()</a> - Method in class com.clanboards.<a href="com/clanboards/Player.html" title="class in com.clanboards">Player</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the player's town hall level.</div>
+</dd>
 <dt><a href="com/clanboards/ClanMember.html#getTrophies()" class="member-name-link">getTrophies()</a> - Method in class com.clanboards.<a href="com/clanboards/ClanMember.html" title="class in com.clanboards">ClanMember</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the member's main village trophy count.</div>
+</dd>
 <dt><a href="com/clanboards/RankedPlayer.html#getTrophies()" class="member-name-link">getTrophies()</a> - Method in class com.clanboards.<a href="com/clanboards/RankedPlayer.html" title="class in com.clanboards">RankedPlayer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/http/HttpRequest.html#getUrl()" class="member-name-link">getUrl()</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the complete URL for this request.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getWarLeague(int)" class="member-name-link">getWarLeague(int)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves information about a specific clan war league.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getWarLeagues(java.lang.Integer)" class="member-name-link">getWarLeagues(Integer)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves all available clan war leagues.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#getWarLog(java.lang.String,java.lang.Integer)" class="member-name-link">getWarLog(String, Integer)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves the war log for a specified clan.</div>
+</dd>
 <dt><a href="com/clanboards/GoldPassSeason.html" class="type-name-link" title="class in com.clanboards">GoldPassSeason</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/GoldPassSeason.html#%3Cinit%3E()" class="member-name-link">GoldPassSeason()</a> - Constructor for class com.clanboards.<a href="com/clanboards/GoldPassSeason.html" title="class in com.clanboards">GoldPassSeason</a></dt>
@@ -402,52 +583,68 @@ loadScripts(document, 'script');</script>
 <h2 class="title" id="I:H">H</h2>
 <dl class="index">
 <dt><a href="com/clanboards/http/HttpRequest.Builder.html#header(java.lang.String,java.lang.String)" class="member-name-link">header(String, String)</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Adds an HTTP header to the request.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpRequest.html" class="type-name-link" title="class in com.clanboards.http">HttpRequest</a> - Class in <a href="com/clanboards/http/package-summary.html">com.clanboards.http</a></dt>
 <dd>
-<div class="block">Simple immutable HTTP request model used by CocClient's pluggable transport.</div>
+<div class="block">Immutable HTTP request model used by the pluggable transport system.</div>
 </dd>
 <dt><a href="com/clanboards/http/HttpRequest.Builder.html" class="type-name-link" title="class in com.clanboards.http">HttpRequest.Builder</a> - Class in <a href="com/clanboards/http/package-summary.html">com.clanboards.http</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Builder for constructing immutable HttpRequest instances.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpRequest.Method.html" class="type-name-link" title="enum class in com.clanboards.http">HttpRequest.Method</a> - Enum Class in <a href="com/clanboards/http/package-summary.html">com.clanboards.http</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Supported HTTP methods for API requests.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpResponse.html" class="type-name-link" title="class in com.clanboards.http">HttpResponse</a> - Class in <a href="com/clanboards/http/package-summary.html">com.clanboards.http</a></dt>
 <dd>
-<div class="block">Simple HTTP response model.</div>
+<div class="block">Immutable HTTP response model containing status code and response body.</div>
 </dd>
 <dt><a href="com/clanboards/http/HttpResponse.html#%3Cinit%3E(int,byte%5B%5D)" class="member-name-link">HttpResponse(int, byte[])</a> - Constructor for class com.clanboards.http.<a href="com/clanboards/http/HttpResponse.html" title="class in com.clanboards.http">HttpResponse</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates an HTTP response with the specified status code and body.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpTransport.html" class="type-name-link" title="interface in com.clanboards.http">HttpTransport</a> - Interface in <a href="com/clanboards/http/package-summary.html">com.clanboards.http</a></dt>
 <dd>
-<div class="block">Pluggable HTTP transport used by CocClient to perform requests.</div>
+<div class="block">Abstraction for HTTP transport used by CocClient to execute API requests.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
 <dt><a href="com/clanboards/CocClient.html#isRawAttributeEnabled()" class="member-name-link">isRawAttributeEnabled()</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns whether raw JSON attachment is enabled for response objects.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
 <dt><a href="com/clanboards/Label.html" class="type-name-link" title="class in com.clanboards">Label</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Represents a label for categorizing clans or players.</div>
+</dd>
 <dt><a href="com/clanboards/Label.html#%3Cinit%3E()" class="member-name-link">Label()</a> - Constructor for class com.clanboards.<a href="com/clanboards/Label.html" title="class in com.clanboards">Label</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/League.html" class="type-name-link" title="class in com.clanboards">League</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Represents a competitive league in Clash of Clans.</div>
+</dd>
 <dt><a href="com/clanboards/League.html#%3Cinit%3E()" class="member-name-link">League()</a> - Constructor for class com.clanboards.<a href="com/clanboards/League.html" title="class in com.clanboards">League</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/Location.html" class="type-name-link" title="class in com.clanboards">Location</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Represents a geographical location for rankings and leaderboards.</div>
+</dd>
 <dt><a href="com/clanboards/Location.html#%3Cinit%3E()" class="member-name-link">Location()</a> - Constructor for class com.clanboards.<a href="com/clanboards/Location.html" title="class in com.clanboards">Location</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/CocClient.html#login(java.lang.String,java.lang.String)" class="member-name-link">login(String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
 <dd>
-<div class="block">Obtain one token with default throttling (10 req/sec per token).</div>
+<div class="block">Authenticates with a single API token using default rate limiting.</div>
 </dd>
 <dt><a href="com/clanboards/CocClient.html#login(java.lang.String,java.lang.String,int,int)" class="member-name-link">login(String, String, int, int)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
 <dd>
-<div class="block">Obtain multiple tokens and configure throttling (per-token requests per second).</div>
+<div class="block">Authenticates with multiple API tokens and configures rate limiting.</div>
 </dd>
 <dt><a href="com/clanboards/examples/LoginExample.html" class="type-name-link" title="class in com.clanboards.examples">LoginExample</a> - Class in <a href="com/clanboards/examples/package-summary.html">com.clanboards.examples</a></dt>
 <dd>&nbsp;</dd>
@@ -455,7 +652,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/CocClient.html#loginWithTokens(java.util.List,int)" class="member-name-link">loginWithTokens(List&lt;String&gt;, int)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
 <dd>
-<div class="block">Use provided tokens and configure throttling.</div>
+<div class="block">Configures the client with pre-obtained API tokens.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:M">M</h2>
@@ -465,55 +662,71 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/clanboards/examples/LoginExample.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class com.clanboards.examples.<a href="com/clanboards/examples/LoginExample.html" title="class in com.clanboards.examples">LoginExample</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/http/HttpRequest.Builder.html#method(com.clanboards.http.HttpRequest.Method)" class="member-name-link">method(HttpRequest.Method)</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets the HTTP method for the request.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:N">N</h2>
 <dl class="index">
 <dt><a href="com/clanboards/http/HttpRequest.html#newBuilder()" class="member-name-link">newBuilder()</a> - Static method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.html" title="class in com.clanboards.http">HttpRequest</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a new builder for constructing HTTP requests.</div>
+</dd>
 <dt><a href="com/clanboards/token/TokenRotator.html#next()" class="member-name-link">next()</a> - Method in class com.clanboards.token.<a href="com/clanboards/token/TokenRotator.html" title="class in com.clanboards.token">TokenRotator</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the next token in the rotation sequence.</div>
+</dd>
 <dt><a href="com/clanboards/exceptions/NotFoundException.html" class="type-name-link" title="class in com.clanboards.exceptions">NotFoundException</a> - Exception in <a href="com/clanboards/exceptions/package-summary.html">com.clanboards.exceptions</a></dt>
 <dd>
-<div class="block">Thrown when a requested resource cannot be found (HTTP 404).</div>
+<div class="block">Exception thrown when a requested resource cannot be found.</div>
 </dd>
 <dt><a href="com/clanboards/exceptions/NotFoundException.html#%3Cinit%3E(java.lang.String)" class="member-name-link">NotFoundException(String)</a> - Constructor for exception com.clanboards.exceptions.<a href="com/clanboards/exceptions/NotFoundException.html" title="class in com.clanboards.exceptions">NotFoundException</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a new NotFoundException with the specified detail message.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:O">O</h2>
 <dl class="index">
 <dt><a href="com/clanboards/auth/Authenticator.html#obtainToken(java.lang.String,java.lang.String)" class="member-name-link">obtainToken(String, String)</a> - Method in interface com.clanboards.auth.<a href="com/clanboards/auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a></dt>
 <dd>
-<div class="block">Returns a single bearer token for the Clash of Clans API.</div>
+<div class="block">Obtains a single API token using the provided credentials.</div>
 </dd>
 <dt><a href="com/clanboards/auth/Authenticator.html#obtainTokens(java.lang.String,java.lang.String,int)" class="member-name-link">obtainTokens(String, String, int)</a> - Method in interface com.clanboards.auth.<a href="com/clanboards/auth/Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a></dt>
 <dd>
-<div class="block">Returns one or more bearer tokens (API keys) for the Clash of Clans API.</div>
+<div class="block">Obtains multiple API tokens using the provided credentials.</div>
 </dd>
 <dt><a href="com/clanboards/auth/DevSiteAuthenticator.html#obtainTokens(java.lang.String,java.lang.String,int)" class="member-name-link">obtainTokens(String, String, int)</a> - Method in class com.clanboards.auth.<a href="com/clanboards/auth/DevSiteAuthenticator.html" title="class in com.clanboards.auth">DevSiteAuthenticator</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Obtains API tokens by authenticating with the developer portal.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
 <dt><a href="com/clanboards/Player.html" class="type-name-link" title="class in com.clanboards">Player</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Represents a Clash of Clans player with core profile information.</div>
+</dd>
 <dt><a href="com/clanboards/Player.html#%3Cinit%3E()" class="member-name-link">Player()</a> - Constructor for class com.clanboards.<a href="com/clanboards/Player.html" title="class in com.clanboards">Player</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/http/HttpRequest.Method.html#POST" class="member-name-link">POST</a> - Enum constant in enum class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Method.html" title="enum class in com.clanboards.http">HttpRequest.Method</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/exceptions/PrivateWarLogException.html" class="type-name-link" title="class in com.clanboards.exceptions">PrivateWarLogException</a> - Exception in <a href="com/clanboards/exceptions/package-summary.html">com.clanboards.exceptions</a></dt>
 <dd>
-<div class="block">Thrown when a clan's war log is private (HTTP 403 on war endpoints).</div>
+<div class="block">Exception thrown when attempting to access private war information.</div>
 </dd>
 <dt><a href="com/clanboards/exceptions/PrivateWarLogException.html#%3Cinit%3E(java.lang.String)" class="member-name-link">PrivateWarLogException(String)</a> - Constructor for exception com.clanboards.exceptions.<a href="com/clanboards/exceptions/PrivateWarLogException.html" title="class in com.clanboards.exceptions">PrivateWarLogException</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a new PrivateWarLogException with the specified detail message.</div>
+</dd>
 <dt><a href="com/clanboards/http/HttpRequest.Method.html#PUT" class="member-name-link">PUT</a> - Enum constant in enum class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Method.html" title="enum class in com.clanboards.http">HttpRequest.Method</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
 <dt><a href="com/clanboards/RankedClan.html" class="type-name-link" title="class in com.clanboards">RankedClan</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Represents a clan with ranking information from leaderboards.</div>
+</dd>
 <dt><a href="com/clanboards/RankedClan.html#%3Cinit%3E()" class="member-name-link">RankedClan()</a> - Constructor for class com.clanboards.<a href="com/clanboards/RankedClan.html" title="class in com.clanboards">RankedClan</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/RankedPlayer.html" class="type-name-link" title="class in com.clanboards">RankedPlayer</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
@@ -522,21 +735,27 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/throttle/RateLimiter.html" class="type-name-link" title="class in com.clanboards.throttle">RateLimiter</a> - Class in <a href="com/clanboards/throttle/package-summary.html">com.clanboards.throttle</a></dt>
 <dd>
-<div class="block">Simple sliding-window rate limiter allowing N requests per given time window.</div>
+<div class="block">Thread-safe sliding-window rate limiter for API request throttling.</div>
 </dd>
 <dt><a href="com/clanboards/throttle/RateLimiter.html#%3Cinit%3E(int,long)" class="member-name-link">RateLimiter(int, long)</a> - Constructor for class com.clanboards.throttle.<a href="com/clanboards/throttle/RateLimiter.html" title="class in com.clanboards.throttle">RateLimiter</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a rate limiter with the specified capacity and time window.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
 <dt><a href="com/clanboards/CocClient.html#searchClans(java.lang.String,java.lang.Integer)" class="member-name-link">searchClans(String, Integer)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
 <dd>
-<div class="block">Search clans by name (and optional limit).</div>
+<div class="block">Searches for clans matching the specified criteria.</div>
 </dd>
 <dt><a href="com/clanboards/CocClient.html#searchLeagues(java.lang.Integer)" class="member-name-link">searchLeagues(Integer)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves all available leagues for the main village.</div>
+</dd>
 <dt><a href="com/clanboards/CocClient.html#searchLocations(java.lang.Integer)" class="member-name-link">searchLocations(Integer)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Retrieves all available locations (countries and global) from the API.</div>
+</dd>
 <dt><a href="com/clanboards/SeasonRef.html" class="type-name-link" title="class in com.clanboards">SeasonRef</a> - Class in <a href="com/clanboards/package-summary.html">com.clanboards</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/SeasonRef.html#%3Cinit%3E()" class="member-name-link">SeasonRef()</a> - Constructor for class com.clanboards.<a href="com/clanboards/SeasonRef.html" title="class in com.clanboards">SeasonRef</a></dt>
@@ -546,7 +765,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#setNumberOfRounds(int)" class="member-name-link">setNumberOfRounds(int)</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#setRounds(java.util.List)" class="member-name-link">setRounds(List&lt;List&lt;String&gt;&gt;)</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets the rounds structure, filtering out invalid war tags.</div>
+</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#setSeason(java.lang.String)" class="member-name-link">setSeason(String)</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/clanboards/wars/ClanWarLeagueGroup.html#setState(java.lang.String)" class="member-name-link">setState(String)</a> - Method in class com.clanboards.wars.<a href="com/clanboards/wars/ClanWarLeagueGroup.html" title="class in com.clanboards.wars">ClanWarLeagueGroup</a></dt>
@@ -556,19 +777,23 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="com/clanboards/util/TagUtil.html" class="type-name-link" title="class in com.clanboards.util">TagUtil</a> - Class in <a href="com/clanboards/util/package-summary.html">com.clanboards.util</a></dt>
 <dd>
-<div class="block">Utility methods for handling Clash of Clans tags.</div>
+<div class="block">Utility methods for handling and normalizing Clash of Clans player and clan tags.</div>
 </dd>
 <dt><a href="com/clanboards/token/TokenRotator.html" class="type-name-link" title="class in com.clanboards.token">TokenRotator</a> - Class in <a href="com/clanboards/token/package-summary.html">com.clanboards.token</a></dt>
 <dd>
-<div class="block">Round-robin token provider.</div>
+<div class="block">Thread-safe round-robin token provider for API key rotation.</div>
 </dd>
 <dt><a href="com/clanboards/token/TokenRotator.html#%3Cinit%3E(java.util.List)" class="member-name-link">TokenRotator(List&lt;String&gt;)</a> - Constructor for class com.clanboards.token.<a href="com/clanboards/token/TokenRotator.html" title="class in com.clanboards.token">TokenRotator</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a token rotator with the specified list of API tokens.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:U">U</h2>
 <dl class="index">
 <dt><a href="com/clanboards/http/HttpRequest.Builder.html#url(java.lang.String)" class="member-name-link">url(String)</a> - Method in class com.clanboards.http.<a href="com/clanboards/http/HttpRequest.Builder.html" title="class in com.clanboards.http">HttpRequest.Builder</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets the URL for the request.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">
@@ -582,12 +807,16 @@ loadScripts(document, 'script');</script>
 the order they are declared.</div>
 </dd>
 <dt><a href="com/clanboards/CocClient.html#verifyPlayerToken(java.lang.String,java.lang.String)" class="member-name-link">verifyPlayerToken(String, String)</a> - Method in class com.clanboards.<a href="com/clanboards/CocClient.html" title="class in com.clanboards">CocClient</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Verifies a player's API token for authentication purposes.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:W">W</h2>
 <dl class="index">
 <dt><a href="com/clanboards/wars/WarSide.html" class="type-name-link" title="class in com.clanboards.wars">WarSide</a> - Class in <a href="com/clanboards/wars/package-summary.html">com.clanboards.wars</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Represents one side (clan or opponent) in a clan war.</div>
+</dd>
 <dt><a href="com/clanboards/wars/WarSide.html#%3Cinit%3E()" class="member-name-link">WarSide()</a> - Constructor for class com.clanboards.wars.<a href="com/clanboards/wars/WarSide.html" title="class in com.clanboards.wars">WarSide</a></dt>
 <dd>&nbsp;</dd>
 </dl>

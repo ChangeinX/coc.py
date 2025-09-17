@@ -77,7 +77,24 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">TokenRotator</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Round-robin token provider.</div>
+<div class="block">Thread-safe round-robin token provider for API key rotation.
+
+ This class manages multiple API tokens and distributes requests across them
+ using a round-robin algorithm. This helps distribute load and avoid hitting
+ per-token rate limits when using multiple API keys.
+
+ The rotation is atomic and thread-safe, making it suitable for concurrent
+ use in multi-threaded applications.
+
+ Thread-safety: This class is thread-safe and designed for concurrent access.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><code>CocClient#loginWithTokens(java.util.List, int)</code></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -90,7 +107,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.util.List)" class="member-name-link">TokenRotator</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;tokens)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a token rotator with the specified list of API tokens.</div>
+</div>
 </div>
 </section>
 </li>
@@ -107,10 +126,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAll()" class="member-name-link">getAll</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns an immutable list of all configured tokens.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#next()" class="member-name-link">next</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the next token in the rotation sequence.</div>
+</div>
 </div>
 </div>
 </div>
@@ -132,6 +155,16 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(java.util.List)">
 <h3>TokenRotator</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">TokenRotator</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;tokens)</span></div>
+<div class="block">Creates a token rotator with the specified list of API tokens.
+
+ The tokens are copied to an immutable list to prevent external modification.
+ At least one token must be provided.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>tokens</code> - list of API tokens to rotate through (must not be null or empty)</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - if tokens is null or empty</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -146,12 +179,28 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="next()">
 <h3>next</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">next</span>()</div>
+<div class="block">Returns the next token in the rotation sequence.
+
+ Uses atomic operations to ensure thread-safe rotation across all available
+ tokens. The rotation wraps around when all tokens have been used.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>next API token in the round-robin sequence</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getAll()">
 <h3>getAll</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">getAll</span>()</div>
+<div class="block">Returns an immutable list of all configured tokens.
+
+ This method is primarily intended for diagnostic purposes
+ and configuration validation.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>immutable list of all API tokens</dd>
+</dl>
 </section>
 </li>
 </ul>

@@ -77,7 +77,22 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">TagUtil</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Utility methods for handling Clash of Clans tags.</div>
+<div class="block">Utility methods for handling and normalizing Clash of Clans player and clan tags.
+
+ This utility class provides methods to clean, correct, and format tags according
+ to the game's standards. Tags are unique identifiers that may be entered by users
+ in various formats and need to be normalized for API consumption.
+
+ All methods are static and thread-safe.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><code>CocClient#getClan(String)</code></li>
+<li><code>CocClient#getPlayer(String)</code></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -95,12 +110,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#correctTag(java.lang.String)" class="member-name-link">correctTag</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Attempt to correct a malformed tag to in-game format.</div>
+<div class="block">Corrects a potentially malformed tag to standard in-game format.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#encodeForPath(java.lang.String)" class="member-name-link">encodeForPath</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Encode a tag for use in a URL path segment (percent-encode '#').</div>
+<div class="block">Encodes a tag for safe use in URL path segments.</div>
 </div>
 </div>
 </div>
@@ -123,19 +138,46 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="correctTag(java.lang.String)">
 <h3>correctTag</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">correctTag</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag)</span></div>
-<div class="block">Attempt to correct a malformed tag to in-game format.
- - Trims whitespace
- - Uppercases letters
- - Replaces letter 'O' with zero '0'
- - Removes all characters not A-Z or 0-9
- - Ensures leading '#'</div>
+<div class="block">Corrects a potentially malformed tag to standard in-game format.
+
+ Applies the following transformations in order:
+ <ul>
+ <li>Trims leading and trailing whitespace</li>
+ <li>Converts all letters to uppercase</li>
+ <li>Replaces letter 'O' with digit '0' (common user error)</li>
+ <li>Removes all characters except A-Z and 0-9</li>
+ <li>Ensures the tag starts with '#'</li>
+ </ul>
+
+ Examples:
+ <pre>
+ correctTag(" 2pp ") → "#2PP"
+ correctTag("9ul2ljrj") → "#9UL2LJRJ"
+ correctTag("#2PO0") → "#2P00"
+ </pre></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>tag</code> - the input tag in any format</dd>
+<dt>Returns:</dt>
+<dd>normalized tag with '#' prefix, or the original tag if null/empty</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="encodeForPath(java.lang.String)">
 <h3>encodeForPath</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">encodeForPath</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;tag)</span></div>
-<div class="block">Encode a tag for use in a URL path segment (percent-encode '#').</div>
+<div class="block">Encodes a tag for safe use in URL path segments.
+
+ Converts the '#' character to its percent-encoded form '%23' to ensure
+ the tag can be safely included in URL paths without being interpreted
+ as a fragment identifier.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>tag</code> - the tag to encode (typically starting with '#')</dd>
+<dt>Returns:</dt>
+<dd>URL-safe tag with '#' replaced by '%23'</dd>
+</dl>
 </section>
 </li>
 </ul>

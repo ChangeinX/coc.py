@@ -77,7 +77,22 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">Authenticator</span></div>
-<div class="block">Strategy interface to obtain API tokens from email/password.</div>
+<div class="block">Strategy interface for obtaining Clash of Clans API tokens from developer credentials.
+
+ This interface abstracts the process of authenticating with the Clash of Clans
+ developer portal and obtaining API tokens. Implementations may use different
+ authentication methods or token sources.
+
+ All methods should be thread-safe for concurrent use.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="DevSiteAuthenticator.html" title="class in com.clanboards.auth"><code>DevSiteAuthenticator</code></a></li>
+<li><code>CocClient#login(String, String)</code></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -96,14 +111,14 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#obtainToken(java.lang.String,java.lang.String)" class="member-name-link">obtainToken</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Returns a single bearer token for the Clash of Clans API.</div>
+<div class="block">Obtains a single API token using the provided credentials.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#obtainTokens(java.lang.String,java.lang.String,int)" class="member-name-link">obtainTokens</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password,
  int&nbsp;count)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Returns one or more bearer tokens (API keys) for the Clash of Clans API.</div>
+<div class="block">Obtains multiple API tokens using the provided credentials.</div>
 </div>
 </div>
 </div>
@@ -124,7 +139,19 @@ loadScripts(document, 'script');</script>
 <h3>obtainToken</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">obtainToken</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</span></div>
-<div class="block">Returns a single bearer token for the Clash of Clans API.</div>
+<div class="block">Obtains a single API token using the provided credentials.
+
+ This convenience method is equivalent to calling obtainTokens(email, password, 1)
+ and returning the first token.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>email</code> - developer account email</dd>
+<dd><code>password</code> - developer account password</dd>
+<dt>Returns:</dt>
+<dd>API token for use with the Clash of Clans API, or null if authentication fails</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if authentication encounters an error</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -133,7 +160,21 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">obtainTokens</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password,
  int&nbsp;count)</span></div>
-<div class="block">Returns one or more bearer tokens (API keys) for the Clash of Clans API.</div>
+<div class="block">Obtains multiple API tokens using the provided credentials.
+
+ Implementations should authenticate with the developer portal and return
+ the requested number of valid API tokens. Tokens may be newly created
+ or reused from existing valid keys.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>email</code> - developer account email</dd>
+<dd><code>password</code> - developer account password</dd>
+<dd><code>count</code> - number of tokens to obtain (must be > 0)</dd>
+<dt>Returns:</dt>
+<dd>list of API tokens (may be fewer than requested if limits are reached)</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if authentication fails or encounters an error</dd>
+</dl>
 </section>
 </li>
 </ul>

@@ -64,11 +64,41 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="package-signature">package <span class="element-name">com.clanboards.auth</span></div>
 <section class="package-description" id="package-description">
-<div class="block">Authentication helpers for acquiring API tokens from
- developer.clashofclans.com.
+<div class="block">Authentication strategies for obtaining Clash of Clans API tokens.
 
- <p><a href="DevSiteAuthenticator.html" title="class in com.clanboards.auth"><code>DevSiteAuthenticator</code></a> logs in, lists existing
- keys, revokes mismatched keys, and creates new keys bound to the current IP.</div>
+ <p>This package provides authentication implementations that handle the
+ process of obtaining valid API tokens from the Clash of Clans developer
+ portal. The authentication process includes credential validation, IP
+ address detection, and API key lifecycle management.
+
+ <h2>Core Components</h2>
+ <ul>
+ <li><a href="Authenticator.html" title="interface in com.clanboards.auth"><code>Authenticator</code></a> - Strategy interface for token acquisition</li>
+ <li><a href="DevSiteAuthenticator.html" title="class in com.clanboards.auth"><code>DevSiteAuthenticator</code></a> - Production implementation using developer portal</li>
+ </ul>
+
+ <h2>Authentication Workflow</h2>
+ <p>The <a href="DevSiteAuthenticator.html" title="class in com.clanboards.auth"><code>DevSiteAuthenticator</code></a> performs:
+ <ol>
+ <li>Login to developer.clashofclans.com with email/password</li>
+ <li>IP address detection from temporary token</li>
+ <li>Search for existing compatible API keys</li>
+ <li>Cleanup of mismatched keys when necessary</li>
+ <li>Creation of new keys as needed</li>
+ </ol>
+
+ <h2>Thread Safety</h2>
+ <p>All authentication implementations are thread-safe and can be used
+ concurrently across multiple threads.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="Authenticator.html" title="interface in com.clanboards.auth"><code>Authenticator</code></a></li>
+<li><a href="DevSiteAuthenticator.html" title="class in com.clanboards.auth"><code>DevSiteAuthenticator</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -80,7 +110,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><a href="../package-summary.html">com.clanboards</a></div>
 <div class="col-last even-row-color">
-<div class="block">Core public API for the Clash of Clans Java client.</div>
+<div class="block">Core public API for the Clash of Clans Java client library.</div>
 </div>
 </div>
 </div>
@@ -94,11 +124,11 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color class-summary class-summary-tab1"><a href="Authenticator.html" title="interface in com.clanboards.auth">Authenticator</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab1">
-<div class="block">Strategy interface to obtain API tokens from email/password.</div>
+<div class="block">Strategy interface for obtaining Clash of Clans API tokens from developer credentials.</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="DevSiteAuthenticator.html" title="class in com.clanboards.auth">DevSiteAuthenticator</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
-<div class="block">Authenticator that logs into developer.clashofclans.com and finds/creates API keys.</div>
+<div class="block">Production authenticator that manages API keys through the developer portal.</div>
 </div>
 </div>
 </div>
