@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.clanboards'
-version = (findProperty('version') ?: '0.0.1')
+version = (findProperty('version') ?: '0.1.1')
 
 java {
     toolchain {
